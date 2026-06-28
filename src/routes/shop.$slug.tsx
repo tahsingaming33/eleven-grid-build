@@ -26,7 +26,8 @@ export const Route = createFileRoute("/shop/$slug")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const product = getProduct(slug)!;
   return (
     <>
       <Section divider={false} size="md">

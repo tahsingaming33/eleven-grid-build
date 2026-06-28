@@ -27,7 +27,8 @@ export const Route = createFileRoute("/work/$slug")({
 });
 
 function CaseStudy() {
-  const { project } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const project = getProject(slug)!;
   const meta = [
     { label: "Format", value: project.format },
     { label: "Runtime", value: project.runtime },

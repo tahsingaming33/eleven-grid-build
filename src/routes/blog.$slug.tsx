@@ -26,7 +26,8 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function Article() {
-  const { post } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const post = getPost(slug)!;
   const recent = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
