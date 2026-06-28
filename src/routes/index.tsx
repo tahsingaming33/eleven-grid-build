@@ -189,5 +189,3 @@ function FAQ() {
     </Section>
   );
 }
-  );
-}
