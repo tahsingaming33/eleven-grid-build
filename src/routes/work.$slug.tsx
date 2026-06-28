@@ -18,7 +18,7 @@ export const Route = createFileRoute("/work/$slug")({
       ],
     };
   },
-  loader: ({ params }) => {
+  loader: ({ params }: { params: { slug: string } }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };

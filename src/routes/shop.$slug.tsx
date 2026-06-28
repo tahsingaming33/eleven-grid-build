@@ -17,7 +17,7 @@ export const Route = createFileRoute("/shop/$slug")({
       ],
     };
   },
-  loader: ({ params }) => {
+  loader: ({ params }: { params: { slug: string } }) => {
     const product = getProduct(params.slug);
     if (!product) throw notFound();
     return { product };
