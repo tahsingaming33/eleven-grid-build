@@ -91,12 +91,14 @@ function TrustedBy() {
     name: string;
     /** width % of the source image occupied by the icon (left-anchored). */
     iconWidthPct: number;
-    /** invert the icon for the opposite theme (mono-black icons only). */
-    invert?: "dark" | "light";
+    /** Tailwind class applied in dark mode (e.g. invert for mono icons). */
+    darkFilterClass?: string;
   }[] = [
-    { src: quakesLogo.url, name: "Quakes Legacy", iconWidthPct: 18 },
-    { src: masahaLogo.url, name: "Masaha", iconWidthPct: 22, invert: "dark" },
-    { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 22, invert: "dark" },
+    { src: quakesLogo.url, name: "Quakes Legacy", iconWidthPct: 20 },
+    // pure-black mono icon — flip to white in dark mode
+    { src: masahaLogo.url, name: "Masaha", iconWidthPct: 28, darkFilterClass: "dark:[filter:brightness(0)_invert(1)]" },
+    // black disc + white "C" — plain invert(1) flips disc→white and C→black, keeping detail
+    { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 26, darkFilterClass: "dark:[filter:invert(1)]" },
     { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 18 },
   ];
   return (
@@ -105,28 +107,21 @@ function TrustedBy() {
         <Eyebrow>Trusted by</Eyebrow>
         <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-10 sm:grid-cols-4">
           {logos.map((l) => {
-            // background-size width = 100 / iconWidthPct * 100 (%) so the icon
-            // slice scales to fill the box height.
+            // background-size width such that the icon slice fills the 36px box
             const sizePct = (100 / l.iconWidthPct) * 100;
-            const invertClass =
-              l.invert === "dark"
-                ? "dark:[filter:brightness(0)_invert(1)]"
-                : l.invert === "light"
-                  ? "[filter:brightness(0)] dark:[filter:none]"
-                  : "";
             return (
-              <div key={l.name} className="flex items-center gap-3">
+              <div key={l.name} className="flex items-center gap-3 px-2">
                 <div
                   role="img"
                   aria-label={l.name}
-                  className={`h-9 w-9 shrink-0 bg-no-repeat ${invertClass}`}
+                  className={`h-9 w-10 shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
                   style={{
                     backgroundImage: `url(${l.src})`,
                     backgroundSize: `${sizePct}% auto`,
                     backgroundPosition: "left center",
                   }}
                 />
-                <span className="text-base font-medium tracking-tight text-foreground/85">
+                <span className="whitespace-nowrap text-base font-medium tracking-tight text-foreground/85">
                   {l.name}
                 </span>
               </div>
