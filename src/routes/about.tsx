@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Grid";
+import portraitAsset from "@/assets/tahsin-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
