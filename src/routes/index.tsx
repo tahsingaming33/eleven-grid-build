@@ -38,14 +38,15 @@ function HeroWithShowreel() {
     <Section divider={false} size="lg" className="bg-etched-grid">
       {/* Showreel first */}
       <div className="mx-auto w-full max-w-5xl pt-6 md:pt-10">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[var(--color-border)]">
-          <NoiseGradient preset="sunset" className="absolute inset-0" />
-          <div className="absolute inset-0 grid place-items-center">
-            <button className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-black/40 px-5 py-3 text-sm text-white backdrop-blur-md">
-              <Play className="h-4 w-4 fill-current" />
-              Play showreel · 02:14
-            </button>
-          </div>
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[var(--color-border)] bg-black">
+          <iframe
+            src="https://player.vimeo.com/video/1194633609?title=0&byline=0&portrait=0&dnt=1"
+            title="Motiondude Showreel"
+            className="absolute inset-0 h-full w-full"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
       </div>
 
