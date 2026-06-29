@@ -42,7 +42,16 @@ function WorkPage() {
             >
               <InteractiveCard className="group bg-[var(--color-card)] p-6">
                 <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)]">
-                  <NoiseGradient preset={PRESETS[i % PRESETS.length]} className="absolute inset-0" />
+                  {p.thumbnail ? (
+                    <img
+                      src={p.thumbnail}
+                      alt={p.title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <NoiseGradient preset={PRESETS[i % PRESETS.length]} className="absolute inset-0" />
+                  )}
                 </div>
                 <div className="mt-5 flex items-start justify-between gap-6">
                 <div className="min-w-0">

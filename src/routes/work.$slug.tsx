@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import { getProject, projects } from "@/data/projects";
-import { ArrowLeft, ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
@@ -73,20 +73,33 @@ function CaseStudy() {
 
       <Section size="md">
         <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-70"
-            style={{
-              background:
-                "radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 60%)",
-            }}
-          />
-          <div className="absolute inset-0 grid place-items-center">
-            <button className="inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--background)]/70 px-5 py-3 text-sm backdrop-blur-md">
-              <Play className="h-4 w-4 fill-current" />
-              Play · {project.runtime}
-            </button>
-          </div>
+          {project.vimeoId ? (
+            <iframe
+              src={`https://player.vimeo.com/video/${project.vimeoId}?title=0&byline=0&portrait=0&dnt=1`}
+              title={project.title}
+              className="absolute inset-0 h-full w-full"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          ) : (
+            <>
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-70"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 60%)",
+                }}
+              />
+              <div className="absolute inset-0 grid place-items-center">
+                <button className="inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--background)]/70 px-5 py-3 text-sm backdrop-blur-md">
+                  <Play className="h-4 w-4 fill-current" />
+                  Play · {project.runtime}
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </Section>
 
@@ -102,9 +115,11 @@ function CaseStudy() {
       </Section>
 
       <Section size="md">
-        <p className="mx-auto max-w-3xl text-balance text-2xl font-medium leading-[1.35] tracking-[-0.01em] md:text-3xl">
-          {project.intro}
-        </p>
+        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-8 md:p-14">
+          <p className="mx-auto max-w-3xl text-balance text-center text-xl font-medium leading-[1.4] tracking-[-0.01em] md:text-2xl">
+            {project.intro}
+          </p>
+        </div>
       </Section>
 
       <Section size="md">
@@ -132,7 +147,7 @@ function CaseStudy() {
             <h2 className="mt-3 text-2xl font-medium tracking-[-0.01em] md:text-3xl">Frames from the edit</h2>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
           {project.storyboard.map((f, i) => (
             <button
               key={i}
@@ -154,15 +169,70 @@ function CaseStudy() {
         </div>
       </Section>
 
+      {project.process && (
+        <Section size="md">
+          <Eyebrow>Process</Eyebrow>
+          <h2 className="mt-3 text-2xl font-medium tracking-[-0.01em] md:text-3xl">How it came together</h2>
+          <div className="mt-10 grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-3">
+            {project.process.map((p) => (
+              <div key={p.heading} className="bg-[var(--color-card)] p-6 md:p-8">
+                <h3 className="text-lg font-medium tracking-[-0.01em]">{p.heading}</h3>
+                <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
+                  {p.items.map((it) => (
+                    <li key={it} className="flex gap-2">
+                      <span aria-hidden>·</span>
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {project.collaboration && (
+        <Section size="md">
+          <Eyebrow>Collaboration</Eyebrow>
+          <div className="mt-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-8 md:p-12">
+            <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {project.collaboration.body}
+            </p>
+            <a
+              href={project.collaboration.ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--background)] px-5 py-3 text-sm font-medium transition-colors hover:bg-[var(--color-surface)]"
+            >
+              <Play className="h-4 w-4 fill-current" />
+              {project.collaboration.ctaLabel}
+            </a>
+          </div>
+        </Section>
+      )}
+
       <Section size="md">
         <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
           <div>
-            <Eyebrow>Roles & Credits</Eyebrow>
+            <Eyebrow>Roles and Credits</Eyebrow>
           </div>
           <div className="divide-y divide-[var(--color-grid)] border-y border-[var(--color-grid)]">
-            {project.credits.map((c) => (
-              <div key={c.name} className="grid grid-cols-2 gap-6 py-4 text-sm">
-                <div className="font-medium">{c.name}</div>
+            {project.credits.map((c, i) => (
+              <div key={`${c.name}-${c.role}-${i}`} className="grid grid-cols-2 gap-6 py-4 text-sm">
+                <div className="font-medium">
+                  {c.href ? (
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline-offset-4 hover:underline"
+                    >
+                      {c.name}
+                    </a>
+                  ) : (
+                    c.name
+                  )}
+                </div>
                 <div className="text-muted-foreground">{c.role}</div>
               </div>
             ))}
@@ -171,7 +241,15 @@ function CaseStudy() {
       </Section>
 
       <Section size="md">
-        <Eyebrow>Other projects</Eyebrow>
+        <div className="flex items-end justify-between gap-6">
+          <Eyebrow>Other Projects</Eyebrow>
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
+          >
+            View All <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
         <div className="mt-8 grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2">
           {others.map((p) => (
             <Link
@@ -180,7 +258,16 @@ function CaseStudy() {
               params={{ slug: p.slug }}
               className="group bg-[var(--color-card)] p-6 transition-colors hover:bg-[var(--color-surface)]"
             >
-              <div className="aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]" />
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+                {p.thumbnail && (
+                  <img
+                    src={p.thumbnail}
+                    alt={p.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+              </div>
               <div className="mt-5">
                 <div className="text-xs text-muted-foreground font-mono tracking-[0.18em] uppercase">{p.format} · {p.year}</div>
                 <div className="mt-2 text-lg font-medium">{p.title}</div>
