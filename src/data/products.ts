@@ -36,7 +36,7 @@ export const products: Product[] = [
       "A small library of enter, exit and transform primitives built on a single easing system. The same kit we ship to product teams.",
     includes: [
       "After Effects project (.aep)",
-      "Token map — curves and durations",
+      "Token map, curves and durations",
       "Lottie exports",
       "Documentation",
     ],

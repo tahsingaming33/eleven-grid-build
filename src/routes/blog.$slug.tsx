@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
     const p = getPost(params.slug);
-    const title = p ? `${p.title} — Motiondude` : "Article — Motiondude";
+    const title = p ? `${p.title}, Motiondude` : "Article, Motiondude";
     const desc = p?.excerpt ?? "Article";
     return {
       meta: [

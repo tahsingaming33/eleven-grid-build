@@ -5,9 +5,9 @@ import { products } from "@/data/products";
 export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
-      { title: "Shop — Motiondude" },
+      { title: "Shop, Motiondude" },
       { name: "description", content: "A small shop of tools, templates and color for motion designers." },
-      { property: "og:title", content: "Shop — Motiondude" },
+      { property: "og:title", content: "Shop, Motiondude" },
       { property: "og:description", content: "Tools, templates and color for motion designers." },
     ],
   }),

@@ -39,12 +39,12 @@ export function Nav() {
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
-          <a
-            href="mailto:hello@motiondude.com"
+          <Link
+            to="/inquiry"
             className="inline-flex h-9 items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-opacity hover:opacity-90"
           >
             Inquiry
-          </a>
+          </Link>
         </div>
       </div>
     </header>
