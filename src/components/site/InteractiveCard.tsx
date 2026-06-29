@@ -1,41 +1,54 @@
-import type { ReactNode, HTMLAttributes } from "react";
+import { useRef, type ReactNode, type MouseEvent, type HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Card with a Clerk-style fine halftone dot texture and a soft glow
- * that fade and scale in from the center on hover, with a gentle shimmer.
+ * Card with a Clerk-style fine halftone dot field that is always animating
+ * underneath, but only revealed in a soft circle around the cursor.
  */
 export function InteractiveCard({
   children,
   className,
   ...rest
 }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  function onMove(e: MouseEvent<HTMLDivElement>) {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }
+
   return (
     <div
+      ref={ref}
+      onMouseMove={onMove}
       className={cn("group/icard relative isolate overflow-hidden", className)}
+      style={{ "--mx": "50%", "--my": "50%" } as React.CSSProperties}
       {...rest}
     >
-      {/* soft centered glow */}
+      {/* soft glow following cursor */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/icard:opacity-100"
         style={{
           background:
-            "radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 70%)",
+            "radial-gradient(220px circle at var(--mx) var(--my), color-mix(in oklab, var(--accent) 18%, transparent), transparent 70%)",
         }}
       />
-      {/* fine halftone, fades + scales in from center, gentle shimmer while hovered */}
+      {/* halftone field — always animating, revealed only under cursor */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 scale-90 transition-all duration-300 ease-out group-hover/icard:opacity-100 group-hover/icard:scale-100 group-hover/icard:animate-halftone-shimmer"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/icard:opacity-100 animate-halftone"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklab, var(--foreground) 55%, transparent) 1px, transparent 1.2px)",
-          backgroundSize: "7px 7px",
+            "radial-gradient(circle, color-mix(in oklab, var(--foreground) 60%, transparent) 1px, transparent 1.5px)",
+          backgroundSize: "6px 6px",
           WebkitMaskImage:
-            "radial-gradient(circle at center, black 0%, transparent 70%)",
+            "radial-gradient(circle 120px at var(--mx) var(--my), black 0%, transparent 70%)",
           maskImage:
-            "radial-gradient(circle at center, black 0%, transparent 70%)",
+            "radial-gradient(circle 120px at var(--mx) var(--my), black 0%, transparent 70%)",
         }}
       />
       <div className="relative">{children}</div>
