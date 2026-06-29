@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function Footer() {
   return (
-    <footer className="bg-edge-halftone border-t border-[var(--color-grid)]">
+    <footer className="bg-section-glow border-t border-[var(--color-grid)]">
       <div className="mx-auto max-w-[1280px] px-6 py-20 md:px-12 md:py-28">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
