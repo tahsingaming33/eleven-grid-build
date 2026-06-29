@@ -222,18 +222,6 @@
   100% { background-position: 0px 0px; filter: opacity(0.55); }
 }
 
-@keyframes marquee-x {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@utility animate-marquee {
-  animation: marquee-x 38s linear infinite;
-}
-
-.logo-adapt-dark { /* logo is dark; invert in dark mode */ }
-.dark .logo-adapt-dark { filter: brightness(0) invert(1); }
-
 @utility animate-halftone {
   animation: halftone-drift 2.4s ease-in-out infinite;
 }
