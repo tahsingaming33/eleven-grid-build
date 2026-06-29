@@ -328,12 +328,12 @@ function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
 function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
   const href = `https://www.youtube.com/results?search_query=${encodeURIComponent(reel.searchQuery)}`;
   return (
-    <div className="space-y-3">
+    <div className="w-full max-w-[260px] rounded-2xl border border-white/[0.08] p-4 md:p-5">
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative block aspect-[9/16] overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]"
+        className="group relative block aspect-[9/16] overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]"
       >
         {/* Backdrop */}
         <div
@@ -345,31 +345,31 @@ function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
           }}
         />
         {/* YouTube-style header */}
-        <div className="absolute left-0 right-0 top-0 flex items-center gap-2 p-3">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#1f6feb] text-[10px] font-bold text-white">
+        <div className="absolute left-0 right-0 top-0 flex items-center gap-2 p-2.5">
+          <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#1f6feb] text-[9px] font-bold text-white">
             MD
           </span>
           <div className="min-w-0 leading-tight">
-            <div className="truncate text-[13px] font-semibold text-white">{reel.videoTitle}</div>
-            <div className="truncate text-[11px] text-white/70">{reel.channel}</div>
+            <div className="truncate text-[12px] font-semibold text-white">{reel.videoTitle}</div>
+            <div className="truncate text-[10px] text-white/70">{reel.channel}</div>
           </div>
         </div>
         {/* Keyword text overlay */}
-        <div className="absolute inset-x-3 top-16 text-center text-[15px] font-medium text-white/90">
+        <div className="absolute inset-x-3 top-14 text-center text-[13px] font-medium text-white/90">
           {reel.keyword}
         </div>
         {/* Play button (YouTube Shorts style) */}
         <div className="absolute inset-0 grid place-items-center">
-          <div className="relative grid h-16 w-12 place-items-center rounded-xl bg-[#ff0033] shadow-[0_10px_30px_-10px_rgba(255,0,51,0.6)] transition-transform group-hover:scale-105">
-            <Play className="h-6 w-6 fill-white text-white" />
+          <div className="relative grid h-12 w-9 place-items-center rounded-lg bg-[#ff0033] shadow-[0_8px_24px_-8px_rgba(255,0,51,0.6)] transition-transform group-hover:scale-105">
+            <Play className="h-4 w-4 fill-white text-white" />
           </div>
         </div>
         {/* External hint */}
-        <div className="absolute right-3 bottom-3 grid h-7 w-7 place-items-center rounded-full border border-white/15 bg-black/40 text-white/80 backdrop-blur-sm transition-colors group-hover:text-white">
-          <ArrowUpRight className="h-3.5 w-3.5" />
+        <div className="absolute right-2.5 bottom-2.5 grid h-5 w-5 place-items-center rounded-full border border-white/15 bg-black/40 text-white/80 backdrop-blur-sm transition-colors group-hover:text-white">
+          <ArrowUpRight className="h-3 w-3" />
         </div>
       </a>
-      <div className="text-center text-[11px] font-mono uppercase tracking-[0.22em] text-muted-foreground">
+      <div className="mt-3 text-center text-[11px] font-mono uppercase tracking-[0.22em] text-muted-foreground">
         Reel {reel.number}
       </div>
     </div>
