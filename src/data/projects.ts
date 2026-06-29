@@ -23,6 +23,14 @@ export interface Project {
   collaboration?: { body: string; ctaLabel: string; ctaHref: string };
   /** Placeholder card. Not clickable, no case study. */
   comingSoon?: boolean;
+  /** Optional YouTube reels grid (rendered in place of the hero video). */
+  reels?: {
+    number: string;
+    videoTitle: string;
+    channel: string;
+    keyword: string;
+    searchQuery: string;
+  }[];
 }
 
 export const projects: Project[] = [
@@ -31,7 +39,8 @@ export const projects: Project[] = [
     title: "Maagnus SaaS Explainer Video",
     subtitle: "Turning complex Shopify data into a clear, compelling product story.",
     year: "2025",
-    description: "Turning complex Shopify data into a clear, compelling product story.",
+    description:
+      "Turning complex Shopify data into a clear, compelling product story. A focused explainer made for Shopify store owners.",
     format: "Motion Video",
     runtime: "35 Seconds",
     production: "7 Days",
