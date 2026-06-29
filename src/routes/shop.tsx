@@ -13,6 +13,7 @@ interface ShopProduct {
   url: string;
   category: Category;
   bestSeller?: boolean;
+  tutorialUrl?: string;
 }
 
 const shopProducts: ShopProduct[] = [
