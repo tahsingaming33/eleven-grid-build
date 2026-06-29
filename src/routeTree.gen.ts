@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as ShopScriptRouteImport } from './routes/shop.script'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -54,6 +55,11 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopScriptRoute = ShopScriptRouteImport.update({
+  id: '/shop/script',
+  path: '/shop/script',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopSlugRoute = ShopSlugRouteImport.update({
   id: '/shop/$slug',
   path: '/shop/$slug',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/inquiry': typeof InquiryRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/shop/script': typeof ShopScriptRoute
   '/work/$slug': typeof WorkSlugRoute
   '/shop/': typeof ShopIndexRoute
   '/work/': typeof WorkIndexRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/inquiry': typeof InquiryRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/shop/script': typeof ShopScriptRoute
   '/work/$slug': typeof WorkSlugRoute
   '/shop': typeof ShopIndexRoute
   '/work': typeof WorkIndexRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/inquiry': typeof InquiryRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/shop/script': typeof ShopScriptRoute
   '/work/$slug': typeof WorkSlugRoute
   '/shop/': typeof ShopIndexRoute
   '/work/': typeof WorkIndexRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/inquiry'
     | '/blog/$slug'
     | '/shop/$slug'
+    | '/shop/script'
     | '/work/$slug'
     | '/shop/'
     | '/work/'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/inquiry'
     | '/blog/$slug'
     | '/shop/$slug'
+    | '/shop/script'
     | '/work/$slug'
     | '/shop'
     | '/work'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/inquiry'
     | '/blog/$slug'
     | '/shop/$slug'
+    | '/shop/script'
     | '/work/$slug'
     | '/shop/'
     | '/work/'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRouteWithChildren
   InquiryRoute: typeof InquiryRoute
   ShopSlugRoute: typeof ShopSlugRoute
+  ShopScriptRoute: typeof ShopScriptRoute
   WorkSlugRoute: typeof WorkSlugRoute
   ShopIndexRoute: typeof ShopIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
@@ -197,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/script': {
+      id: '/shop/script'
+      path: '/shop/script'
+      fullPath: '/shop/script'
+      preLoaderRoute: typeof ShopScriptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/$slug': {
       id: '/shop/$slug'
       path: '/shop/$slug'
@@ -230,6 +250,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRouteWithChildren,
   InquiryRoute: InquiryRoute,
   ShopSlugRoute: ShopSlugRoute,
+  ShopScriptRoute: ShopScriptRoute,
   WorkSlugRoute: WorkSlugRoute,
   ShopIndexRoute: ShopIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
