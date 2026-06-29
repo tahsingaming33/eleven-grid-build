@@ -43,8 +43,8 @@ export function InteractiveCard({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/icard:opacity-100 animate-halftone"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklab, var(--foreground) 60%, transparent) 1px, transparent 1.5px)",
-          backgroundSize: "6px 6px",
+            "radial-gradient(circle, color-mix(in oklab, var(--foreground) 45%, transparent) 0.5px, transparent 0.5px)",
+          backgroundSize: "3px 3px",
           WebkitMaskImage:
             "radial-gradient(circle 120px at var(--mx) var(--my), black 0%, transparent 70%)",
           maskImage:
