@@ -25,6 +25,7 @@ const shopProducts: ShopProduct[] = [
     thumbnail: "https://public-files.gumroad.com/yw66don1wc0wpbhg5iqihcwd67b0",
     url: "https://tahsinmahmud.gumroad.com/l/zeliosaasbreakdown",
     category: "project-files",
+    tutorialUrl: "https://www.youtube.com/watch?v=k0lqThij2Lg&t=6s",
   },
   {
     title: "Teejayartz Breakdown Pack",
