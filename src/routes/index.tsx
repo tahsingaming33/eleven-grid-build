@@ -5,6 +5,10 @@ import { Film, Sparkles, Layers, Play } from "lucide-react";
 import { InteractiveCard } from "@/components/site/InteractiveCard";
 import { NoiseGradient } from "@/components/site/NoiseGradient";
 import { useRef, useState } from "react";
+import elitesCrypto from "@/assets/clients/elites-crypto.png.asset.json";
+import masaha from "@/assets/clients/masaha.png.asset.json";
+import tealDiamonds from "@/assets/clients/teal-diamonds.png.asset.json";
+import quakesLegacy from "@/assets/clients/quakes-legacy.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,20 +79,39 @@ function HeroWithShowreel() {
 
 
 function TrustedBy() {
-  const logos = ["NORTHWIND", "LUMEN", "ATLAS", "MERIDIAN", "PARALLEL", "FIELDWORK"];
+  const logos = [
+    { name: "Elites Crypto", src: elitesCrypto.url, adapt: "dark" as const },
+    { name: "Masaha", src: masaha.url, adapt: "dark" as const },
+    { name: "Teal Diamonds", src: tealDiamonds.url, adapt: "none" as const },
+    { name: "Quakes Legacy", src: quakesLegacy.url, adapt: "none" as const },
+  ];
+  // Triplicate for a seamless loop; animation translates -50% so the first half repeats.
+  const loop = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
   return (
     <Section size="sm" className="bg-edge-halftone">
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-10">
         <Eyebrow>Trusted by</Eyebrow>
-        <div className="grid w-full grid-cols-2 gap-y-6 sm:grid-cols-3 md:grid-cols-6">
-          {logos.map((l) => (
-            <div
-              key={l}
-              className="text-center font-mono text-[12px] tracking-[0.22em] text-muted-foreground"
-            >
-              {l}
-            </div>
-          ))}
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          }}
+        >
+          <div className="flex w-max animate-marquee items-center gap-16 md:gap-24">
+            {loop.map((l, i) => (
+              <img
+                key={`${l.name}-${i}`}
+                src={l.src}
+                alt={l.name}
+                className={`h-9 w-auto shrink-0 object-contain opacity-80 ${l.adapt === "dark" ? "logo-adapt-dark" : ""}`}
+                loading="lazy"
+                draggable={false}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </Section>
