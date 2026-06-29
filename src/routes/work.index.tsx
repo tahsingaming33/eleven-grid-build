@@ -34,16 +34,17 @@ function WorkPage() {
       </Section>
       <Section size="md">
         <div className="grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2">
-          {projects.map((p, i) => (
-            <Link
-              key={p.slug}
-              to="/work/$slug"
-              params={{ slug: p.slug }}
-              className="block"
-            >
+          {projects.map((p, i) => {
+            const inner = (
               <InteractiveCard className="group bg-[var(--color-card)] p-6">
-                <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)]">
-                  {p.vimeoId ? (
+                <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+                  {p.comingSoon ? (
+                    <div className="absolute inset-0 grid place-items-center bg-[var(--color-surface)]">
+                      <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground/80">
+                        Coming Soon
+                      </span>
+                    </div>
+                  ) : p.vimeoId ? (
                     <HoverPreviewThumb vimeoId={p.vimeoId} thumbnail={p.thumbnail} alt={p.title} />
                   ) : p.thumbnail ? (
                     <img
@@ -57,20 +58,34 @@ function WorkPage() {
                   )}
                 </div>
                 <div className="mt-5 flex items-start justify-between gap-6">
-                <div className="min-w-0">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <span className="font-mono tracking-[0.18em] uppercase">{p.format}</span>
-                    <span>·</span>
-                    <span>{p.year}</span>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <span className="font-mono tracking-[0.18em] uppercase">{p.format}</span>
+                      <span>·</span>
+                      <span>{p.year}</span>
+                    </div>
+                    <h3 className="mt-2 text-xl font-medium tracking-[-0.01em]">{p.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
                   </div>
-                  <h3 className="mt-2 text-xl font-medium tracking-[-0.01em]">{p.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
-                </div>
-                <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                  {!p.comingSoon && (
+                    <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                  )}
                 </div>
               </InteractiveCard>
-            </Link>
-          ))}
+            );
+            if (p.comingSoon) {
+              return (
+                <div key={p.slug} aria-disabled="true" className="block cursor-default select-none">
+                  {inner}
+                </div>
+              );
+            }
+            return (
+              <Link key={p.slug} to="/work/$slug" params={{ slug: p.slug }} className="block">
+                {inner}
+              </Link>
+            );
+          })}
         </div>
       </Section>
     </>
