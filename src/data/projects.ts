@@ -12,7 +12,15 @@ export interface Project {
   intro: string;
   strategy: { heading: string; body: string; tags: string[] };
   storyboard: { caption: string }[];
-  credits: { name: string; role: string }[];
+  credits: { name: string; role: string; href?: string }[];
+  /** Vimeo numeric id — when present, an embedded player is rendered in the hero. */
+  vimeoId?: string;
+  /** Absolute thumbnail URL — used for Work-grid card image. */
+  thumbnail?: string;
+  /** Optional Process section (3 cards on the case study page). */
+  process?: { heading: string; items: string[] }[];
+  /** Optional Collaboration block. */
+  collaboration?: { body: string; ctaLabel: string; ctaHref: string };
 }
 
 export const projects: Project[] = [
@@ -112,6 +120,67 @@ export const projects: Project[] = [
       { name: "Motiondude", role: "Motion Lead" },
       { name: "Atlas Design", role: "Product Design" },
       { name: "R. Imani", role: "Engineering" },
+    ],
+  },
+  {
+    slug: "maagnus",
+    title: "Maagnus — SaaS Explainer Video",
+    subtitle: "Turning complex Shopify data into a clear, compelling product story.",
+    year: "2025",
+    description: "Turning complex Shopify data into a clear, compelling product story.",
+    format: "Motion Video",
+    runtime: "35 Seconds",
+    production: "7 Days",
+    purpose: "Product Launch / Awareness",
+    cta: "tahsin@motiondude.online",
+    vimeoId: "1158834812",
+    thumbnail:
+      "https://i.vimeocdn.com/video/2113002199-81a27d78824318513c72347c6944e814a83d8a367b8c6cf1e0c871e9d042cc8d-d_1280x720?region=us",
+    intro:
+      "Maagnus needed more than a feature walkthrough — it needed a story. One that made Shopify merchants feel the problem before they understood the solution.",
+    strategy: {
+      heading: "Strategy",
+      body: "Maagnus is a Shopify analytics app that helps store owners collect customer data, track buyer personas, and optimize ads and newsletters for more sales. The challenge was explaining a data-heavy product without overwhelming the viewer. The strategy was to lead with the pain point — merchants who know their numbers but not their customers — then show Maagnus as the bridge. No technical deep-dives. Just clarity, trust, and a strong call to action.",
+      tags: ["Lead with the problem", "Simplicity over features", "Data made human"],
+    },
+    storyboard: [
+      { caption: "Frame 01" },
+      { caption: "Frame 02" },
+      { caption: "Frame 03" },
+      { caption: "Frame 04" },
+      { caption: "Frame 05" },
+      { caption: "Frame 06" },
+      { caption: "Frame 07" },
+      { caption: "Frame 08" },
+      { caption: "Frame 09" },
+      { caption: "Frame 10" },
+    ],
+    process: [
+      {
+        heading: "Visual System",
+        items: ["Clean SaaS UI aesthetic", "Minimal color palette", "Data visualization as hero element"],
+      },
+      {
+        heading: "Animation",
+        items: ["Smooth UI transitions", "Data-driven motion timing", "Screen recording compositing"],
+      },
+      {
+        heading: "Constraints",
+        items: ["No live actor footage", "Product UI only", "60-second hard cap"],
+      },
+    ],
+    collaboration: {
+      body: "This project was a solo production. Script, storyboard, motion design, and final delivery were all handled end-to-end by Tahsin Mahmud. The client provided product demo recordings and brand guidelines.",
+      ctaLabel: "Watch Final Video",
+      ctaHref: "https://vimeo.com/1158834812",
+    },
+    credits: [
+      { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Tahsin Mahmud", role: "Motion Design", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Tahsin Mahmud", role: "Storyboard", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Maagnus / GMM Solutions SNC", role: "Script (Client Provided)" },
+      { name: "Maagnus / GMM Solutions SNC", role: "Client" },
+      { name: "Visionary", role: "Studio" },
     ],
   },
 ];
