@@ -82,11 +82,13 @@ function TrustedBy() {
   // adapt: "dark" => filter applied in dark mode (logo is black, needs to become white)
   //        "light" => filter applied in light mode (logo is white, needs to become black)
   //        "none" => full color, never filter
-  const logos: { src: string; alt: string; adapt: "dark" | "light" | "none" }[] = [
-    { src: quakesLogo.url, alt: "Quakes Legacy", adapt: "none" },
-    { src: masahaLogo.url, alt: "Masaha", adapt: "dark" },
-    { src: elitesLogo.url, alt: "Elites Crypto", adapt: "dark" },
-    { src: diamondLogo.url, alt: "Diamond", adapt: "none" },
+  // "needsDarkBg": logo has white/light text — invisible on light bg, give it a dark chip in light mode.
+  // "invertOnDark": pure black mono logo — invert to white in dark mode.
+  const logos: { src: string; alt: string; mode: "needsDarkBg" | "invertOnDark" }[] = [
+    { src: quakesLogo.url, alt: "Quakes Legacy", mode: "needsDarkBg" },
+    { src: masahaLogo.url, alt: "Masaha", mode: "invertOnDark" },
+    { src: elitesLogo.url, alt: "Elites Crypto", mode: "invertOnDark" },
+    { src: diamondLogo.url, alt: "Maagnus", mode: "needsDarkBg" },
   ];
   return (
     <Section size="sm" className="bg-edge-halftone">
@@ -94,18 +96,24 @@ function TrustedBy() {
         <Eyebrow>Trusted by</Eyebrow>
         <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-10 sm:grid-cols-4">
           {logos.map((l) => (
-            <img
+            <div
               key={l.alt}
-              src={l.src}
-              alt={l.alt}
               className={
-                l.adapt === "dark"
-                  ? "h-9 w-auto object-contain opacity-80 dark:[filter:brightness(0)_invert(1)]"
-                  : l.adapt === "light"
-                    ? "h-9 w-auto object-contain opacity-80 [filter:brightness(0)] dark:[filter:none]"
-                    : "h-9 w-auto object-contain"
+                l.mode === "needsDarkBg"
+                  ? "flex h-14 items-center justify-center rounded-lg bg-neutral-900 px-5 dark:bg-transparent dark:px-0"
+                  : "flex h-14 items-center justify-center"
               }
-            />
+            >
+              <img
+                src={l.src}
+                alt={l.alt}
+                className={
+                  l.mode === "invertOnDark"
+                    ? "h-9 w-auto object-contain opacity-80 dark:[filter:brightness(0)_invert(1)]"
+                    : "h-9 w-auto object-contain"
+                }
+              />
+            </div>
           ))}
         </div>
       </div>
