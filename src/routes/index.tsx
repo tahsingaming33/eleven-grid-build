@@ -9,6 +9,7 @@ import quakesLogo from "@/assets/logos/quakes.png.asset.json";
 import masahaLogo from "@/assets/logos/masaha.png.asset.json";
 import elitesLogo from "@/assets/logos/elites.png.asset.json";
 import diamondLogo from "@/assets/logos/diamond.png.asset.json";
+import maagnusIcon from "@/assets/logos/maagnus-icon-safe.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -90,7 +91,9 @@ function TrustedBy() {
     src: string;
     name: string;
     /** width % of the source image occupied by the icon (left-anchored). */
-    iconWidthPct: number;
+    iconWidthPct?: number;
+    /** Render the already-isolated icon directly instead of slicing the source. */
+    fullImage?: boolean;
     /** Tailwind width class for the icon container. */
     widthClass?: string;
     /** Tailwind class applied in dark mode (e.g. invert for mono icons). */
@@ -101,8 +104,8 @@ function TrustedBy() {
     { src: masahaLogo.url, name: "Masaha", iconWidthPct: 28, darkFilterClass: "dark:[filter:brightness(0)_invert(1)]" },
     // black disc + white "C" — plain invert(1) flips disc→white and C→black, keeping detail
     { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 26, darkFilterClass: "dark:[filter:invert(1)]" },
-    // slightly wider container so the diamond tip isn't clipped
-    { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 20, widthClass: "w-11" },
+    // isolated full icon with transparent padding, so no edge gets cropped
+    { src: maagnusIcon.url, name: "Maagnus", fullImage: true, widthClass: "w-11" },
   ];
   return (
     <Section size="sm" className="bg-edge-halftone">
@@ -111,19 +114,28 @@ function TrustedBy() {
         <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-10 sm:grid-cols-4">
           {logos.map((l) => {
             // background-size width such that the icon slice fills the 36px box
-            const sizePct = (100 / l.iconWidthPct) * 100;
+            const sizePct = l.iconWidthPct ? (100 / l.iconWidthPct) * 100 : 100;
             return (
               <div key={l.name} className="flex items-center gap-3 px-2">
-                <div
-                  role="img"
-                  aria-label={l.name}
-                  className={`h-9 ${l.widthClass ?? "w-10"} shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
-                  style={{
-                    backgroundImage: `url(${l.src})`,
-                    backgroundSize: `${sizePct}% auto`,
-                    backgroundPosition: "left center",
-                  }}
-                />
+                {l.fullImage ? (
+                  <img
+                    src={l.src}
+                    alt=""
+                    aria-hidden="true"
+                    className={`h-9 ${l.widthClass ?? "w-10"} shrink-0 object-contain ${l.darkFilterClass ?? ""}`}
+                  />
+                ) : (
+                  <div
+                    role="img"
+                    aria-label={l.name}
+                    className={`h-9 ${l.widthClass ?? "w-10"} shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
+                    style={{
+                      backgroundImage: `url(${l.src})`,
+                      backgroundSize: `${sizePct}% auto`,
+                      backgroundPosition: "left center",
+                    }}
+                  />
+                )}
                 <span className="whitespace-nowrap text-base font-medium tracking-tight text-foreground/85">
                   {l.name}
                 </span>
