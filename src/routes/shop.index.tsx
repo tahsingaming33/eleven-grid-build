@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Play, Sparkles } from "lucide-react";
+import { ArrowUpRight, Play, Sparkles } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Grid";
 
 type Category = "project-files" | "scripts-plugins";
@@ -72,7 +73,7 @@ const categories: { id: Category; label: string }[] = [
   { id: "scripts-plugins", label: "Scripts and Plugins" },
 ];
 
-export const Route = createFileRoute("/shop")({
+export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title: "Shop, Motiondude" },
@@ -107,6 +108,40 @@ function ShopPage() {
         </div>
       </Section>
       <Section size="md">
+        <Link
+          to="/shop/script"
+          className="group mb-14 block overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] transition-colors hover:border-foreground/30 md:grid md:grid-cols-[1.1fr_1fr]"
+        >
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] via-[#141418] to-[#0d0d10] md:aspect-auto md:h-full">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-60"
+              style={{
+                background:
+                  "radial-gradient(60% 50% at 30% 40%, rgba(99,102,241,0.18) 0%, transparent 70%), radial-gradient(50% 40% at 80% 70%, rgba(236,72,153,0.12) 0%, transparent 70%)",
+              }}
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-xs uppercase tracking-[0.32em] text-muted-foreground">
+                Featured Script
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-col justify-between gap-8 p-8 md:p-10">
+            <div>
+              <div className="eyebrow">AE Script</div>
+              <h3 className="mt-4 text-2xl font-medium tracking-[-0.01em] md:text-3xl">
+                Script Name
+              </h3>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                A custom After Effects script that speeds up your workflow.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              View script
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
+          </div>
+        </Link>
         <div className="mb-10 flex flex-wrap items-center gap-2 border-b border-[var(--color-border)]">
           {categories.map((c) => {
             const active = activeCategory === c.id;
