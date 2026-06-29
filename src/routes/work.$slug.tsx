@@ -145,34 +145,6 @@ function CaseStudy() {
         </div>
       </Section>
 
-      <Section size="md">
-        <div className="mb-10 flex items-end justify-between gap-6">
-          <div>
-            <Eyebrow>Storyboard</Eyebrow>
-            <h2 className="mt-3 text-2xl font-medium tracking-[-0.01em] md:text-3xl">Frames from the edit</h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
-          {project.storyboard.map((f, i) => (
-            <button
-              key={i}
-              onClick={() => setLightbox(i)}
-              className="group relative aspect-video overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-left"
-            >
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-60 transition-opacity group-hover:opacity-90"
-                style={{
-                  background: `radial-gradient(ellipse at ${20 + (i * 13) % 60}% ${30 + (i * 7) % 40}%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 65%)`,
-                }}
-              />
-              <div className="absolute bottom-3 left-3 right-3 text-[11px] font-mono tracking-[0.16em] uppercase text-muted-foreground">
-                {String(i + 1).padStart(2, "0")} · {f.caption}
-              </div>
-            </button>
-          ))}
-        </div>
-      </Section>
 
       {project.process && (
         <Section size="md">
