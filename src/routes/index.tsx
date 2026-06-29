@@ -99,7 +99,7 @@ function TrustedBy() {
     { src: masahaLogo.url, name: "Masaha", iconWidthPct: 28, darkFilterClass: "dark:[filter:brightness(0)_invert(1)]" },
     // black disc + white "C" — plain invert(1) flips disc→white and C→black, keeping detail
     { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 26, darkFilterClass: "dark:[filter:invert(1)]" },
-    { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 18 },
+    { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 22 },
   ];
   return (
     <Section size="sm" className="bg-edge-halftone">
