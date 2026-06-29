@@ -12,6 +12,7 @@ interface ShopProduct {
   description: string;
   thumbnail: string;
   url: string;
+  internal?: boolean;
   category: Category;
   bestSeller?: boolean;
   tutorialUrl?: string;
@@ -66,6 +67,16 @@ const shopProducts: ShopProduct[] = [
     url: "https://tahsinmahmud.gumroad.com/l/sutoxprojectfiledownlodeforfree",
     category: "project-files",
   },
+  {
+    title: "Script Name",
+    price: "AE Script",
+    description:
+      "A custom After Effects script that speeds up your workflow.",
+    thumbnail: "",
+    url: "/shop/script",
+    internal: true,
+    category: "scripts-plugins",
+  },
 ];
 
 const categories: { id: Category; label: string }[] = [
@@ -108,40 +119,6 @@ function ShopPage() {
         </div>
       </Section>
       <Section size="md">
-        <Link
-          to="/shop/script"
-          className="group mb-14 block overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] transition-colors hover:border-foreground/30 md:grid md:grid-cols-[1.1fr_1fr]"
-        >
-          <div className="relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] via-[#141418] to-[#0d0d10] md:aspect-auto md:h-full">
-            <div
-              className="pointer-events-none absolute inset-0 opacity-60"
-              style={{
-                background:
-                  "radial-gradient(60% 50% at 30% 40%, rgba(99,102,241,0.18) 0%, transparent 70%), radial-gradient(50% 40% at 80% 70%, rgba(236,72,153,0.12) 0%, transparent 70%)",
-              }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-xs uppercase tracking-[0.32em] text-muted-foreground">
-                Featured Script
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-col justify-between gap-8 p-8 md:p-10">
-            <div>
-              <div className="eyebrow">AE Script</div>
-              <h3 className="mt-4 text-2xl font-medium tracking-[-0.01em] md:text-3xl">
-                Script Name
-              </h3>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
-                A custom After Effects script that speeds up your workflow.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-              View script
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </div>
-          </div>
-        </Link>
         <div className="mb-10 flex flex-wrap items-center gap-2 border-b border-[var(--color-border)]">
           {categories.map((c) => {
             const active = activeCategory === c.id;
@@ -203,13 +180,30 @@ function ShopPage() {
                   </div>
                 </>
               )}
-              <div className="aspect-[4/3] w-full overflow-hidden bg-[var(--color-surface)]">
-                <img
-                  src={p.thumbnail}
-                  alt={p.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--color-surface)]">
+                {p.thumbnail ? (
+                  <img
+                    src={p.thumbnail}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1f] via-[#141418] to-[#0d0d10]">
+                    <div
+                      className="pointer-events-none absolute inset-0 opacity-60"
+                      style={{
+                        background:
+                          "radial-gradient(60% 50% at 30% 40%, rgba(99,102,241,0.18) 0%, transparent 70%), radial-gradient(50% 40% at 80% 70%, rgba(236,72,153,0.12) 0%, transparent 70%)",
+                      }}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-xs uppercase tracking-[0.32em] text-muted-foreground">
+                        Featured Script
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="relative flex flex-1 flex-col p-6">
                 <h3 className="text-lg font-medium tracking-[-0.01em]">
@@ -234,19 +228,34 @@ function ShopPage() {
                         Watch Tutorial
                       </a>
                     )}
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={
-                        "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
-                        (p.bestSeller
-                          ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                          : "bg-foreground text-background")
-                      }
-                    >
-                      Get it
-                    </a>
+                    {p.internal ? (
+                      <Link
+                        to={p.url}
+                        className={
+                          "inline-flex h-9 items-center gap-1 rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
+                          (p.bestSeller
+                            ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
+                            : "bg-foreground text-background")
+                        }
+                      >
+                        View script
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={
+                          "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
+                          (p.bestSeller
+                            ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
+                            : "bg-foreground text-background")
+                        }
+                      >
+                        Get it
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
