@@ -5,6 +5,10 @@ import { Film, Sparkles, Layers, Play } from "lucide-react";
 import { InteractiveCard } from "@/components/site/InteractiveCard";
 import { NoiseGradient } from "@/components/site/NoiseGradient";
 import { useRef, useState } from "react";
+import quakesLogo from "@/assets/logos/quakes.png.asset.json";
+import masahaLogo from "@/assets/logos/masaha.png.asset.json";
+import elitesLogo from "@/assets/logos/elites.png.asset.json";
+import diamondLogo from "@/assets/logos/diamond.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,19 +79,33 @@ function HeroWithShowreel() {
 
 
 function TrustedBy() {
-  const logos = ["NORTHWIND", "LUMEN", "ATLAS", "MERIDIAN", "PARALLEL", "FIELDWORK"];
+  // adapt: "dark" => filter applied in dark mode (logo is black, needs to become white)
+  //        "light" => filter applied in light mode (logo is white, needs to become black)
+  //        "none" => full color, never filter
+  const logos: { src: string; alt: string; adapt: "dark" | "light" | "none" }[] = [
+    { src: quakesLogo.url, alt: "Quakes Legacy", adapt: "none" },
+    { src: masahaLogo.url, alt: "Masaha", adapt: "dark" },
+    { src: elitesLogo.url, alt: "Elites Crypto", adapt: "dark" },
+    { src: diamondLogo.url, alt: "Diamond", adapt: "none" },
+  ];
   return (
     <Section size="sm" className="bg-edge-halftone">
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col gap-10">
         <Eyebrow>Trusted by</Eyebrow>
-        <div className="grid w-full grid-cols-2 gap-y-6 sm:grid-cols-3 md:grid-cols-6">
+        <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-10 sm:grid-cols-4">
           {logos.map((l) => (
-            <div
-              key={l}
-              className="text-center font-mono text-[12px] tracking-[0.22em] text-muted-foreground"
-            >
-              {l}
-            </div>
+            <img
+              key={l.alt}
+              src={l.src}
+              alt={l.alt}
+              className={
+                l.adapt === "dark"
+                  ? "h-9 w-auto object-contain opacity-80 dark:[filter:brightness(0)_invert(1)]"
+                  : l.adapt === "light"
+                    ? "h-9 w-auto object-contain opacity-80 [filter:brightness(0)] dark:[filter:none]"
+                    : "h-9 w-auto object-contain"
+              }
+            />
           ))}
         </div>
       </div>
