@@ -211,3 +211,12 @@
     transform: translateY(0);
   }
 }
+
+@keyframes halftone-shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.65; }
+}
+
+@utility animate-halftone-shimmer {
+  animation: halftone-shimmer 1.8s ease-in-out infinite;
+}
