@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import { Film, Sparkles, Layers, Play } from "lucide-react";
+import { InteractiveCard } from "@/components/site/InteractiveCard";
+import { NoiseGradient } from "@/components/site/NoiseGradient";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,8 +20,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <Hero />
-      <Showreel />
+      <HeroWithShowreel />
       <TrustedBy />
       <WhatIDo />
       <FAQ />
@@ -27,10 +28,24 @@ function Index() {
   );
 }
 
-function Hero() {
+function HeroWithShowreel() {
   return (
     <Section divider={false} size="lg">
-      <div className="mx-auto max-w-3xl pt-10 text-center md:pt-20">
+      {/* Showreel first */}
+      <div className="mx-auto w-full max-w-5xl pt-6 md:pt-10">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[var(--color-border)]">
+          <NoiseGradient preset="sunset" className="absolute inset-0" />
+          <div className="absolute inset-0 grid place-items-center">
+            <button className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-black/40 px-5 py-3 text-sm text-white backdrop-blur-md">
+              <Play className="h-4 w-4 fill-current" />
+              Play showreel · 02:14
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Headline + subtitle + buttons below */}
+      <div className="mx-auto mt-16 max-w-3xl text-center md:mt-24">
         <Eyebrow>Motion designer · Available 2026</Eyebrow>
         <h1 className="mt-6 text-balance text-4xl font-medium leading-[1.05] tracking-[-0.02em] md:text-6xl">
           Cinematic motion design for ambitious brands.
@@ -57,28 +72,6 @@ function Hero() {
   );
 }
 
-function Showreel() {
-  return (
-    <Section size="md">
-      <div className="mx-auto aspect-video w-full max-w-5xl overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="relative grid h-full w-full place-items-center">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-60"
-            style={{
-              background:
-                "radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%)",
-            }}
-          />
-          <button className="relative z-10 inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--background)]/70 px-5 py-3 text-sm backdrop-blur-md">
-            <Play className="h-4 w-4 fill-current" />
-            Play showreel · 02:14
-          </button>
-        </div>
-      </div>
-    </Section>
-  );
-}
 
 function TrustedBy() {
   const logos = ["NORTHWIND", "LUMEN", "ATLAS", "MERIDIAN", "PARALLEL", "FIELDWORK"];
@@ -131,26 +124,16 @@ function WhatIDo() {
         {items.map((it) => {
           const Icon = it.icon;
           return (
-            <div
+            <InteractiveCard
               key={it.title}
-              className="group relative bg-[var(--color-card)] p-8 transition-colors hover:bg-[var(--color-surface)]"
+              className="bg-[var(--color-card)] p-8"
             >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 20% 0%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 60%)",
-                }}
-              />
-              <div className="relative">
-                <div className="grid h-10 w-10 place-items-center rounded-lg border border-[var(--color-border)] text-foreground/80">
-                  <Icon className="h-4 w-4" />
-                </div>
-                <h3 className="mt-6 text-lg font-medium">{it.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{it.body}</p>
+              <div className="grid h-10 w-10 place-items-center rounded-lg border border-[var(--color-border)] text-foreground/80">
+                <Icon className="h-4 w-4" />
               </div>
-            </div>
+              <h3 className="mt-6 text-lg font-medium">{it.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{it.body}</p>
+            </InteractiveCard>
           );
         })}
       </div>
