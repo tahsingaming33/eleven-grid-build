@@ -275,5 +275,17 @@
     z-index: 0;
     background: radial-gradient(ellipse 70% 60% at 50% 15%, var(--bg-shade), transparent 70%);
   }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(circle, var(--foreground) 0.5px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.035;
+    -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black, transparent 80%);
+    mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black, transparent 80%);
+  }
   & > * { position: relative; z-index: 1; }
 }

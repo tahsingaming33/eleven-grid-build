@@ -21,6 +21,8 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   /** Vertical padding scale. */
   size?: "sm" | "md" | "lg";
   inner?: string;
+  /** Apply the soft radial glow + faint halftone background. Default true. */
+  glow?: boolean;
 }
 
 export function Section({
@@ -29,6 +31,7 @@ export function Section({
   size = "lg",
   className,
   inner,
+  glow = true,
   ...rest
 }: SectionProps) {
   const pad =
@@ -39,7 +42,7 @@ export function Section({
         : "py-24 md:py-36";
   return (
     <section
-      className={cn("relative", divider && "border-t border-[var(--color-grid)]", className)}
+      className={cn("relative", glow && "bg-section-glow", divider && "border-t border-[var(--color-grid)]", className)}
       {...rest}
     >
       <div className={cn("relative px-6 md:px-12", pad, inner)}>{children}</div>
