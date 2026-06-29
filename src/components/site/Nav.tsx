@@ -61,35 +61,41 @@ export function Nav() {
         </div>
       </div>
       {open && (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-background md:hidden">
-          <div className="flex h-16 items-center justify-between border-b border-[var(--color-grid)] px-6">
+        <div
+          className="fixed inset-0 z-[9999] flex flex-col md:hidden animate-[fadeIn_200ms_ease-out]"
+          style={{ backgroundColor: "#0a0a0a" }}
+        >
+          <div className="flex h-16 items-center justify-between border-b border-white/10 px-6">
             <Link to="/" onClick={() => setOpen(false)} className="font-mono text-[13px] font-semibold tracking-[0.18em]">
               MOTIONDUDE
             </Link>
             <button
               onClick={() => setOpen(false)}
               aria-label="Close menu"
-              className="grid h-9 w-9 place-items-center rounded-full border border-[var(--color-border)] text-muted-foreground"
+              className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white/70"
             >
               <X className="h-4 w-4" />
             </button>
           </div>
-          <nav className="flex flex-1 flex-col px-6 py-8">
-            {items.map((i) => (
+          <nav className="flex flex-1 flex-col px-6 py-10">
+            {items.map((i, idx) => (
               <Link
                 key={i.to}
                 to={i.to}
                 onClick={() => setOpen(false)}
-                className="flex min-h-[56px] items-center border-b border-[var(--color-grid)] text-2xl font-medium tracking-[-0.01em] text-foreground"
+                className="flex min-h-[64px] items-center border-b border-white/10 text-[28px] font-medium tracking-[-0.01em] text-[#f5f5f0] animate-[menuItemIn_250ms_ease-out_both]"
+                style={{ animationDelay: `${idx * 70}ms` }}
                 activeOptions={{ exact: i.to === "/" }}
               >
                 {i.label}
               </Link>
             ))}
+            <div className="flex-1" />
             <Link
               to="/inquiry"
               onClick={() => setOpen(false)}
-              className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-medium text-background"
+              className="mb-2 inline-flex h-14 w-full items-center justify-center rounded-full bg-[#f5f5f0] px-6 text-base font-medium text-[#0a0a0a] animate-[menuItemIn_250ms_ease-out_both]"
+              style={{ animationDelay: "350ms" }}
             >
               Inquiry
             </Link>
