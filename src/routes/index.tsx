@@ -30,7 +30,7 @@ function Index() {
 
 function HeroWithShowreel() {
   return (
-    <Section divider={false} size="lg">
+    <Section divider={false} size="lg" className="bg-etched-grid">
       {/* Showreel first */}
       <div className="mx-auto w-full max-w-5xl pt-6 md:pt-10">
         <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[var(--color-border)]">
@@ -76,7 +76,7 @@ function HeroWithShowreel() {
 function TrustedBy() {
   const logos = ["NORTHWIND", "LUMEN", "ATLAS", "MERIDIAN", "PARALLEL", "FIELDWORK"];
   return (
-    <Section size="sm">
+    <Section size="sm" className="bg-edge-halftone">
       <div className="flex flex-col items-center gap-8">
         <Eyebrow>Trusted by</Eyebrow>
         <div className="grid w-full grid-cols-2 gap-y-6 sm:grid-cols-3 md:grid-cols-6">
