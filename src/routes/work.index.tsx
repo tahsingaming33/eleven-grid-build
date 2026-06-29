@@ -7,7 +7,7 @@ import { NoiseGradient, type NoisePreset } from "@/components/site/NoiseGradient
 
 const PRESETS: NoisePreset[] = ["sunset", "ocean", "forest", "ember", "dusk"];
 
-export const Route = createFileRoute("/work")({
+export const Route = createFileRoute("/work/")({
   head: () => ({
     meta: [
       { title: "Work — Motiondude" },
