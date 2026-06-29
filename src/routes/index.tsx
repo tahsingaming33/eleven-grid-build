@@ -111,24 +111,24 @@ function TrustedBy() {
     <Section size="sm" className="bg-edge-halftone">
       <div className="flex flex-col gap-10">
         <Eyebrow>Trusted by</Eyebrow>
-        <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-10 sm:grid-cols-4">
+        <div className="flex flex-nowrap items-center justify-between gap-3 sm:grid sm:grid-cols-4 sm:justify-items-center sm:gap-x-12 sm:gap-y-10">
           {logos.map((l) => {
             // background-size width such that the icon slice fills the 36px box
             const sizePct = l.iconWidthPct ? (100 / l.iconWidthPct) * 100 : 100;
             return (
-              <div key={l.name} className="flex items-center gap-3 px-2">
+              <div key={l.name} className="flex min-w-0 items-center gap-1.5 sm:gap-3 sm:px-2">
                 {l.fullImage ? (
                   <img
                     src={l.src}
                     alt=""
                     aria-hidden="true"
-                    className={`h-9 ${l.widthClass ?? "w-10"} shrink-0 object-contain ${l.darkFilterClass ?? ""}`}
+                    className={`h-6 w-6 shrink-0 object-contain sm:h-9 sm:w-11 ${l.darkFilterClass ?? ""}`}
                   />
                 ) : (
                   <div
                     role="img"
                     aria-label={l.name}
-                    className={`h-9 ${l.widthClass ?? "w-10"} shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
+                    className={`h-6 w-6 shrink-0 bg-no-repeat sm:h-9 sm:w-10 ${l.darkFilterClass ?? ""}`}
                     style={{
                       backgroundImage: `url(${l.src})`,
                       backgroundSize: `${sizePct}% auto`,
@@ -136,7 +136,7 @@ function TrustedBy() {
                     }}
                   />
                 )}
-                <span className="whitespace-nowrap text-base font-medium tracking-tight text-foreground/85">
+                <span className="truncate text-[10px] font-medium tracking-tight text-foreground/85 sm:whitespace-nowrap sm:text-base">
                   {l.name}
                 </span>
               </div>
