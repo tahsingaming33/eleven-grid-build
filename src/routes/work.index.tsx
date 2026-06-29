@@ -4,6 +4,7 @@ import { projects } from "@/data/projects";
 import { ArrowUpRight } from "lucide-react";
 import { InteractiveCard } from "@/components/site/InteractiveCard";
 import { NoiseGradient, type NoisePreset } from "@/components/site/NoiseGradient";
+import { HoverPreviewThumb } from "@/components/site/HoverPreviewThumb";
 
 const PRESETS: NoisePreset[] = ["sunset", "ocean", "forest", "ember", "dusk"];
 
@@ -42,7 +43,9 @@ function WorkPage() {
             >
               <InteractiveCard className="group bg-[var(--color-card)] p-6">
                 <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)]">
-                  {p.thumbnail ? (
+                  {p.vimeoId ? (
+                    <HoverPreviewThumb vimeoId={p.vimeoId} thumbnail={p.thumbnail} alt={p.title} />
+                  ) : p.thumbnail ? (
                     <img
                       src={p.thumbnail}
                       alt={p.title}
