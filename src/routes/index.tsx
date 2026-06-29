@@ -4,6 +4,7 @@ import { Section, Eyebrow } from "@/components/site/Grid";
 import { Film, Sparkles, Layers, Play } from "lucide-react";
 import { InteractiveCard } from "@/components/site/InteractiveCard";
 import { NoiseGradient } from "@/components/site/NoiseGradient";
+import { useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -143,11 +144,14 @@ function WhatIDo() {
 
 function FAQ() {
   const items = [
-    { q: "How do projects typically start?", a: "With a short call and a one-page brief. If it feels right for both of us, I send a treatment within a week." },
-    { q: "Do you work with agencies?", a: "Yes — as a director, motion lead or finishing partner. Most of my work is direct-to-client, but agency collaborations are a regular part of the year." },
-    { q: "What's the typical timeline?", a: "Brand films run six to ten weeks. Commercials, four to eight. Motion systems are ongoing engagements that start with a two-week scoping sprint." },
-    { q: "Where are you based?", a: "Lisbon. I travel for shoots and work remotely with teams everywhere." },
+    { q: "Why is a brand film worth more than a regular video?", a: "A brand film is engineered for recall, positioning, and emotional resonance — not just views. It compounds in value because every share reinforces your brand voice, not just your message." },
+    { q: "Why not just hire a video agency for less?", a: "Agencies optimize for delivery. I optimize for outcome. You work with one creative director from concept to final frame — no account managers, no telephone game, no rotating team." },
+    { q: "Can I just use stock footage and templates?", a: "You can. But so can your competitors. Templates produce videos that look like everyone else's — which is the opposite of what motion design is supposed to do." },
+    { q: "How does a brand film actually increase conversions?", a: "It removes ambiguity. Visitors get instant clarity on what you do, who it's for, and why it matters — usually within the first 8 seconds. That's where conversion lifts come from." },
+    { q: "Why is your process different from other motion designers?", a: "I start with strategy, not After Effects. Every frame is justified by a business goal before a single keyframe is drawn." },
+    { q: "How do you position a brand as premium through video?", a: "Restraint. Premium feels expensive because of what's left out — empty space, slower pacing, deliberate typography, restraint in motion. I design for that." },
   ];
+  const [open, setOpen] = useState<number | null>(0);
   return (
     <Section size="lg">
       <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
@@ -158,17 +162,44 @@ function FAQ() {
           </h2>
         </div>
         <div className="divide-y divide-[var(--color-grid)] border-y border-[var(--color-grid)]">
-          {items.map((it) => (
-            <details key={it.q} className="group py-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between text-base font-medium">
-                {it.q}
-                <span className="ml-4 text-muted-foreground transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">{it.a}</p>
-            </details>
+          {items.map((it, i) => (
+            <FAQRow key={it.q} q={it.q} a={it.a} isOpen={open === i} onToggle={() => setOpen(open === i ? null : i)} />
           ))}
         </div>
       </div>
     </Section>
+  );
+}
+
+function FAQRow({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div className="group">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-base font-medium transition-colors hover:text-foreground/80"
+      >
+        <span>{q}</span>
+        <span className="relative ml-4 inline-flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
+          <span className="absolute h-px w-3.5 bg-current" />
+          <span
+            className={`absolute h-3.5 w-px bg-current transition-transform duration-300 ease-out ${isOpen ? "rotate-90" : ""}`}
+          />
+        </span>
+      </button>
+      <div
+        style={{ height: isOpen ? (ref.current?.scrollHeight ?? 0) : 0 }}
+        className="overflow-hidden transition-[height] duration-[350ms] ease-out"
+      >
+        <div
+          ref={ref}
+          className={`pb-6 pr-10 transition-opacity duration-300 ease-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+        >
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{a}</p>
+        </div>
+      </div>
+    </div>
   );
 }
