@@ -40,7 +40,7 @@ export function InteractiveCard({
       {/* halftone field — always animating, revealed only under cursor */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/icard:opacity-100 animate-halftone"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/icard:opacity-100"
         style={{
           backgroundImage:
             "radial-gradient(circle, color-mix(in oklab, var(--foreground) 45%, transparent) 0.5px, transparent 0.5px)",
