@@ -46,7 +46,7 @@ export function InteractiveCard({
             "radial-gradient(circle, color-mix(in oklab, var(--foreground) 45%, transparent) 0.5px, transparent 0.5px)",
           backgroundSize: "3px 3px",
           WebkitMaskImage:
-            let"radial-gradient(circle 120px at var(--mx) var(--my), black 0%, transparent 70%)",
+            "radial-gradient(circle 120px at var(--mx) var(--my), black 0%, transparent 70%)",
           maskImage:
             "radial-gradient(circle 120px at var(--mx) var(--my), black 0%, transparent 70%)",
         }}
