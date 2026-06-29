@@ -25,6 +25,45 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "lovable-concept-ad",
+    title: "Lovable — Concept Ad",
+    subtitle: "A self-initiated motion concept built around one real story — making my first website with AI.",
+    year: "2025",
+    description: "A self-initiated motion concept built around one real story — making my first website with AI.",
+    format: "Motion Video",
+    runtime: "60 Seconds",
+    production: "5 Days",
+    purpose: "Self-Initiated / Concept",
+    cta: "tahsin@motiondude.online",
+    vimeoId: "1197933363",
+    thumbnail: "/__l5e/assets-v1/949bd922-a0c2-4a95-952e-dd17885fee76/lovable-thumb.png",
+    intro:
+      "What if the process of building something could become the story itself? This video is that experiment.",
+    strategy: {
+      heading: "Strategy",
+      body: "This was never a client project. It started as a personal question — what would a real Lovable ad look like if a motion designer made it? The concept was simple and honest: I built my first ever website using Lovable, an AI-powered web builder. The whole experience — the prompts, the iterations, the surprises — felt like a story worth telling. So I turned it into a 60-second explainer video. No client brief. No approval process. Just a real experience, motion-designed into a concept ad. The goal was to show what Lovable can do by showing exactly what I did with it. The video is genuine, fast-paced, and built around a single relatable insight — anyone can build a website now, if they know how to talk to AI.",
+      tags: ["Real story, not fiction", "Concept before client", "Motion as proof"],
+    },
+    storyboard: [
+      { caption: "Frame 01" },
+      { caption: "Frame 02" },
+      { caption: "Frame 03" },
+      { caption: "Frame 04" },
+      { caption: "Frame 05" },
+      { caption: "Frame 06" },
+      { caption: "Frame 07" },
+      { caption: "Frame 08" },
+      { caption: "Frame 09" },
+      { caption: "Frame 10" },
+    ],
+    credits: [
+      { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Tahsin Mahmud", role: "Motion Design", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Tahsin Mahmud", role: "Script and Storyboard", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Self-Initiated", role: "Concept Project" },
+    ],
+  },
+  {
     slug: "northwind-brand-film",
     title: "Northwind",
     subtitle: "A brand film for a next-generation logistics company",
