@@ -212,11 +212,12 @@
   }
 }
 
-@keyframes halftone-shimmer {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.65; }
+@keyframes halftone-drift {
+  0%   { background-position: 0px 0px; filter: opacity(0.55); }
+  50%  { background-position: 6px 3px; filter: opacity(0.9); }
+  100% { background-position: 0px 0px; filter: opacity(0.55); }
 }
 
-@utility animate-halftone-shimmer {
-  animation: halftone-shimmer 1.8s ease-in-out infinite;
+@utility animate-halftone {
+  animation: halftone-drift 2.4s ease-in-out infinite;
 }
