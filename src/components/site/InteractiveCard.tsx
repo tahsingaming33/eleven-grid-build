@@ -1,4 +1,4 @@
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import { useRef, type ReactNode, type MouseEvent, type HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -8,14 +8,8 @@ import { cn } from "@/lib/utils";
 export function InteractiveCard({
   children,
   className,
-  as: Tag = "div",
   ...rest
-}: {
-  children: ReactNode;
-  className?: string;
-  as?: any;
-  [k: string]: any;
-}) {
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) {
   const ref = useRef<HTMLDivElement>(null);
 
   function onMove(e: MouseEvent<HTMLDivElement>) {
@@ -27,7 +21,7 @@ export function InteractiveCard({
   }
 
   return (
-    <Tag
+    <div
       ref={ref}
       onMouseMove={onMove}
       className={cn("group/icard relative isolate overflow-hidden", className)}
@@ -57,6 +51,6 @@ export function InteractiveCard({
         }}
       />
       <div className="relative">{children}</div>
-    </Tag>
+    </div>
   );
 }
