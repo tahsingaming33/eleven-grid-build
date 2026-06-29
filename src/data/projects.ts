@@ -153,14 +153,7 @@ export const projects: Project[] = [
       body: "The series leans on a single visual system: muted palette, restrained typography, and motion that earns its cuts. The goal is recall, not noise.",
       tags: ["Series System", "Restrained Motion", "Education First"],
     },
-    storyboard: [
-      { caption: "Frame 01" },
-      { caption: "Frame 02" },
-      { caption: "Frame 03" },
-      { caption: "Frame 04" },
-      { caption: "Frame 05" },
-      { caption: "Frame 06" },
-    ],
+    storyboard: [],
     reels: [
       {
         number: "01",
