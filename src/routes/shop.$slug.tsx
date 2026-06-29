@@ -68,7 +68,7 @@ function ProductPage() {
               href={product.buyUrl}
               className="mt-10 inline-flex h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90"
             >
-              Buy, {product.price}
+              Buy {product.price}
             </a>
           </div>
         </div>
