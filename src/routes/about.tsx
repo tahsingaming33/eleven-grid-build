@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Grid";
-import portraitAsset from "@/assets/tahsin-portrait.jpg.asset.json";
+import portraitAsset from "@/assets/tahsin-workspace.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -44,20 +44,6 @@ function AboutPage() {
             <p>
               Outside of client projects I make tutorials on YouTube, create personal brand films for the brands I love, and build plugins and templates that help other motion designers upgrade their skills.
             </p>
-            <div className="grid grid-cols-3 gap-6 pt-6">
-              <div>
-                <div className="eyebrow">Based in</div>
-                <div className="mt-2 text-sm font-medium tracking-[-0.01em] text-[var(--color-foreground)]">Bangladesh</div>
-              </div>
-              <div>
-                <div className="eyebrow">Experience</div>
-                <div className="mt-2 text-sm font-medium tracking-[-0.01em] text-[var(--color-foreground)]">2 Years</div>
-              </div>
-              <div>
-                <div className="eyebrow">Languages</div>
-                <div className="mt-2 text-sm font-medium tracking-[-0.01em] text-[var(--color-foreground)]">English, Hindi, Bangla</div>
-              </div>
-            </div>
           </div>
         </div>
       </Section>
