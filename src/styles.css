@@ -263,3 +263,17 @@
   }
   & > * { position: relative; z-index: 1; }
 }
+
+@utility bg-section-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 15%, var(--bg-shade), transparent 70%);
+  }
+  & > * { position: relative; z-index: 1; }
+}
