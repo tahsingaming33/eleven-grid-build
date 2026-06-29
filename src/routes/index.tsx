@@ -91,6 +91,8 @@ function TrustedBy() {
     name: string;
     /** width % of the source image occupied by the icon (left-anchored). */
     iconWidthPct: number;
+    /** Tailwind width class for the icon container. */
+    widthClass?: string;
     /** Tailwind class applied in dark mode (e.g. invert for mono icons). */
     darkFilterClass?: string;
   }[] = [
@@ -99,7 +101,8 @@ function TrustedBy() {
     { src: masahaLogo.url, name: "Masaha", iconWidthPct: 28, darkFilterClass: "dark:[filter:brightness(0)_invert(1)]" },
     // black disc + white "C" — plain invert(1) flips disc→white and C→black, keeping detail
     { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 26, darkFilterClass: "dark:[filter:invert(1)]" },
-    { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 22 },
+    // slightly wider container so the diamond tip isn't clipped
+    { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 20, widthClass: "w-11" },
   ];
   return (
     <Section size="sm" className="bg-edge-halftone">
