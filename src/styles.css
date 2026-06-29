@@ -69,6 +69,8 @@
   --radius: 0.875rem;
   /* Warm white, ElevenLabs-like */
   --background: oklch(0.985 0.005 95);
+  --bg-shade: oklch(0.92 0.01 80 / 0.55);
+  --grain-opacity: 0.04;
   --foreground: oklch(0.16 0.006 60);
   --surface: oklch(0.97 0.006 90);
   --card: oklch(0.99 0.004 90);
@@ -106,6 +108,8 @@
 
 .dark {
   --background: oklch(0.13 0.003 270);
+  --bg-shade: oklch(0.28 0.006 270 / 0.55);
+  --grain-opacity: 0.06;
   --foreground: oklch(0.96 0.003 90);
   --surface: oklch(0.16 0.003 270);
   --card: oklch(0.17 0.004 270);
@@ -153,6 +157,32 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--bg-shade), transparent 70%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
   }
 
   ::selection {

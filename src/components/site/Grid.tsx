@@ -8,23 +8,7 @@ import { cn } from "@/lib/utils";
  */
 export function GridFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative mx-auto w-full max-w-[1280px]">
-      {/* vertical guides */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 right-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-grid) 1px, transparent 1px)",
-          backgroundSize: "25% 100%",
-          backgroundPosition: "0 0",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-px"
-        style={{ background: "var(--color-grid)" }}
-      />
+    <div className="relative mx-auto w-full max-w-[1280px] border-x border-[var(--color-grid)]">
       {children}
     </div>
   );

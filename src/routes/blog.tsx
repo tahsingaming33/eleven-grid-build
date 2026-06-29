@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import { posts } from "@/data/posts";
+import { InteractiveCard } from "@/components/site/InteractiveCard";
+import { NoiseGradient, type NoisePreset } from "@/components/site/NoiseGradient";
+
+const PRESETS: NoisePreset[] = ["sunset", "ocean", "forest", "ember", "dusk"];
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -28,22 +32,18 @@ function BlogPage() {
       </Section>
       <Section size="md">
         <div className="grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2">
-          {posts.map((p) => (
+          {posts.map((p, i) => (
             <Link
               key={p.slug}
               to="/blog/$slug"
               params={{ slug: p.slug }}
-              className="group bg-[var(--color-card)] p-6 transition-colors hover:bg-[var(--color-surface)]"
+              className="block"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-                <div
-                  className="h-full w-full opacity-70"
-                  style={{
-                    background: `radial-gradient(ellipse at 30% 30%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 65%)`,
-                  }}
-                />
-              </div>
-              <div className="mt-5">
+              <InteractiveCard className="bg-[var(--color-card)] p-6">
+                <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-[var(--color-border)]">
+                  <NoiseGradient preset={PRESETS[i % PRESETS.length]} />
+                </div>
+                <div className="mt-5">
                 <div className="flex items-center gap-3 text-xs text-muted-foreground">
                   <span className="font-mono tracking-[0.18em] uppercase">{p.category}</span>
                   <span>·</span>
@@ -53,7 +53,8 @@ function BlogPage() {
                 </div>
                 <h3 className="mt-3 text-xl font-medium tracking-[-0.01em]">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
-              </div>
+                </div>
+              </InteractiveCard>
             </Link>
           ))}
         </div>
