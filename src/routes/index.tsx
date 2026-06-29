@@ -114,7 +114,7 @@ function WhatIDo() {
     },
   ];
   return (
-    <Section size="lg">
+    <Section size="lg" className="bg-section-glow">
       <div className="mb-14 max-w-2xl">
         <Eyebrow>What I do</Eyebrow>
         <h2 className="mt-4 text-balance text-3xl font-medium tracking-[-0.02em] md:text-4xl">
@@ -153,7 +153,7 @@ function FAQ() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <Section size="lg">
+    <Section size="lg" className="bg-section-glow">
       <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
         <div>
           <Eyebrow>FAQ</Eyebrow>
