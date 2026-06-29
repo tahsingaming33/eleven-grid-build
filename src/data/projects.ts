@@ -161,6 +161,43 @@ export const projects: Project[] = [
       { caption: "Frame 05" },
       { caption: "Frame 06" },
     ],
+    reels: [
+      {
+        number: "01",
+        videoTitle: "Elite Crypto Video 16",
+        channel: "Motion Dude",
+        keyword: "wiring.",
+        searchQuery: "Elite Crypto Video 16 Motion Dude",
+      },
+      {
+        number: "02",
+        videoTitle: "Elite Crypto Video 15",
+        channel: "Motion Dude",
+        keyword: "refineries",
+        searchQuery: "Elite Crypto Video 15 Motion Dude",
+      },
+      {
+        number: "03",
+        videoTitle: "Elite Crypto Video 13",
+        channel: "Motion Dude",
+        keyword: "Buy gold for 17 months straight to record highs.",
+        searchQuery: "Elite Crypto Video 13 Motion Dude",
+      },
+      {
+        number: "04",
+        videoTitle: "Elite Crypto Video 9",
+        channel: "Motion Dude",
+        keyword: "havens.",
+        searchQuery: "Elite Crypto Video 9 Motion Dude",
+      },
+      {
+        number: "05",
+        videoTitle: "Elite Crypto Video 17",
+        channel: "Motion Dude",
+        keyword: "Cook on Beijing",
+        searchQuery: "Elite Crypto Video 17 Motion Dude",
+      },
+    ],
     credits: [
       { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
       { name: "Tahsin Mahmud", role: "Motion Design", href: "https://www.instagram.com/motiondudehere/" },
