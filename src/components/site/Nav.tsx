@@ -16,7 +16,22 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const iframes = document.querySelectorAll<HTMLIFrameElement>("iframe");
+    const containers = Array.from(iframes)
+      .map((iframe) => iframe.parentElement)
+      .filter((el): el is HTMLElement => el !== null);
+    if (open) {
+      iframes.forEach((el) => (el.style.visibility = "hidden"));
+      containers.forEach((el) => (el.style.visibility = "hidden"));
+    } else {
+      iframes.forEach((el) => (el.style.visibility = ""));
+      containers.forEach((el) => (el.style.visibility = ""));
+    }
+    return () => {
+      document.body.style.overflow = "";
+      iframes.forEach((el) => (el.style.visibility = ""));
+      containers.forEach((el) => (el.style.visibility = ""));
+    };
   }, [open]);
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--color-grid)] bg-[color-mix(in_oklab,var(--background)_82%,transparent)] backdrop-blur-xl">
