@@ -221,3 +221,41 @@
 @utility animate-halftone {
   animation: halftone-drift 2.4s ease-in-out infinite;
 }
+
+@utility bg-edge-halftone {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(circle, var(--foreground) 0.5px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.05;
+    -webkit-mask-image: linear-gradient(to right, black 0%, transparent 30%, transparent 70%, black 100%);
+    mask-image: linear-gradient(to right, black 0%, transparent 30%, transparent 70%, black 100%);
+  }
+  & > * { position: relative; z-index: 1; }
+}
+
+@utility bg-etched-grid {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(to right, var(--foreground) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--foreground) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.035;
+    -webkit-mask-image: radial-gradient(ellipse 65% 60% at 50% 45%, black, transparent 78%);
+    mask-image: radial-gradient(ellipse 65% 60% at 50% 45%, black, transparent 78%);
+  }
+  & > * { position: relative; z-index: 1; }
+}
