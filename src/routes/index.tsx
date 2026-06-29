@@ -82,39 +82,56 @@ function TrustedBy() {
   // adapt: "dark" => filter applied in dark mode (logo is black, needs to become white)
   //        "light" => filter applied in light mode (logo is white, needs to become black)
   //        "none" => full color, never filter
-  // "needsDarkBg": logo has white/light text — invisible on light bg, give it a dark chip in light mode.
-  // "invertOnDark": pure black mono logo — invert to white in dark mode.
-  const logos: { src: string; alt: string; mode: "needsDarkBg" | "invertOnDark" }[] = [
-    { src: quakesLogo.url, alt: "Quakes Legacy", mode: "needsDarkBg" },
-    { src: masahaLogo.url, alt: "Masaha", mode: "invertOnDark" },
-    { src: elitesLogo.url, alt: "Elites Crypto", mode: "invertOnDark" },
-    { src: diamondLogo.url, alt: "Maagnus", mode: "needsDarkBg" },
+  // Each source PNG has the icon on the left and a brand name baked in as
+  // white text on the right. We show only the icon (via background-image clipped
+  // to the icon's slice of the source) and render the name in real text that
+  // adapts to the theme. `invert` flips pure-black mono icons for dark mode.
+  const logos: {
+    src: string;
+    name: string;
+    /** width % of the source image occupied by the icon (left-anchored). */
+    iconWidthPct: number;
+    /** invert the icon for the opposite theme (mono-black icons only). */
+    invert?: "dark" | "light";
+  }[] = [
+    { src: quakesLogo.url, name: "Quakes Legacy", iconWidthPct: 18 },
+    { src: masahaLogo.url, name: "Masaha", iconWidthPct: 22, invert: "dark" },
+    { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 22, invert: "dark" },
+    { src: diamondLogo.url, name: "Maagnus", iconWidthPct: 18 },
   ];
   return (
     <Section size="sm" className="bg-edge-halftone">
       <div className="flex flex-col gap-10">
         <Eyebrow>Trusted by</Eyebrow>
         <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-10 sm:grid-cols-4">
-          {logos.map((l) => (
-            <div
-              key={l.alt}
-              className={
-                l.mode === "needsDarkBg"
-                  ? "flex h-14 items-center justify-center rounded-lg bg-neutral-900 px-5 dark:bg-transparent dark:px-0"
-                  : "flex h-14 items-center justify-center"
-              }
-            >
-              <img
-                src={l.src}
-                alt={l.alt}
-                className={
-                  l.mode === "invertOnDark"
-                    ? "h-9 w-auto object-contain opacity-80 dark:[filter:brightness(0)_invert(1)]"
-                    : "h-9 w-auto object-contain"
-                }
-              />
-            </div>
-          ))}
+          {logos.map((l) => {
+            // background-size width = 100 / iconWidthPct * 100 (%) so the icon
+            // slice scales to fill the box height.
+            const sizePct = (100 / l.iconWidthPct) * 100;
+            const invertClass =
+              l.invert === "dark"
+                ? "dark:[filter:brightness(0)_invert(1)]"
+                : l.invert === "light"
+                  ? "[filter:brightness(0)] dark:[filter:none]"
+                  : "";
+            return (
+              <div key={l.name} className="flex items-center gap-3">
+                <div
+                  role="img"
+                  aria-label={l.name}
+                  className={`h-9 w-9 shrink-0 bg-no-repeat ${invertClass}`}
+                  style={{
+                    backgroundImage: `url(${l.src})`,
+                    backgroundSize: `${sizePct}% auto`,
+                    backgroundPosition: "left center",
+                  }}
+                />
+                <span className="text-base font-medium tracking-tight text-foreground/85">
+                  {l.name}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Section>
