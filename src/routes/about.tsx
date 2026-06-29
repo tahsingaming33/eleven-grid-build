@@ -64,9 +64,9 @@ function AboutPage() {
       <Section size="md">
         <div className="grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-3">
           {[
-            { k: "Based in", v: "Lisbon, PT" },
-            { k: "Years", v: "10+" },
-            { k: "Languages", v: "EN · PT · IT" },
+            { k: "Based in", v: "Bangladesh" },
+            { k: "Experience", v: "2 Years" },
+            { k: "Languages", v: "English, Hindi, Bangla" },
           ].map((s) => (
             <div key={s.k} className="bg-[var(--color-card)] p-8">
               <div className="eyebrow">{s.k}</div>
