@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Play, Sparkles } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Grid";
 
 type Category = "project-files" | "scripts-plugins";
@@ -13,6 +13,7 @@ interface ShopProduct {
   url: string;
   category: Category;
   bestSeller?: boolean;
+  tutorialUrl?: string;
 }
 
 const shopProducts: ShopProduct[] = [
@@ -24,6 +25,7 @@ const shopProducts: ShopProduct[] = [
     thumbnail: "https://public-files.gumroad.com/yw66don1wc0wpbhg5iqihcwd67b0",
     url: "https://tahsinmahmud.gumroad.com/l/zeliosaasbreakdown",
     category: "project-files",
+    tutorialUrl: "https://www.youtube.com/watch?v=k0lqThij2Lg&t=6s",
   },
   {
     title: "Teejayartz Breakdown Pack",
@@ -34,6 +36,7 @@ const shopProducts: ShopProduct[] = [
     url: "https://tahsinmahmud.gumroad.com/l/teejayartzbreakdownvideo",
     category: "project-files",
     bestSeller: true,
+    tutorialUrl: "https://www.youtube.com/watch?v=enrHgez6iWA&t=35s",
   },
   {
     title: "Free UI Sound Effect Pack",
@@ -180,23 +183,36 @@ function ShopPage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
-                <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-6">
                   <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-medium">
                     {p.price}
                   </span>
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={
-                      "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
-                      (p.bestSeller
-                        ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                        : "bg-foreground text-background")
-                    }
-                  >
-                    Get it
-                  </a>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    {p.tutorialUrl && (
+                      <a
+                        href={p.tutorialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-[var(--color-surface)]"
+                      >
+                        <Play className="h-3 w-3 fill-current" />
+                        Watch Tutorial
+                      </a>
+                    )}
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={
+                        "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
+                        (p.bestSeller
+                          ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
+                          : "bg-foreground text-background")
+                      }
+                    >
+                      Get it
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
