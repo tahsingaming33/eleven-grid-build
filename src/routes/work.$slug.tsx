@@ -309,13 +309,13 @@ function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
   const bottom = reels.slice(3, 5);
   return (
     <div className="space-y-10">
-      <div className="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6">
+      <div className="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6 justify-items-center">
         {top.map((r) => (
           <ReelCard key={r.number} reel={r} />
         ))}
       </div>
       {bottom.length > 0 && (
-        <div className="mx-auto grid grid-cols-2 gap-5 md:max-w-[66%] md:gap-6">
+        <div className="mx-auto grid grid-cols-2 gap-5 md:max-w-[66%] md:gap-6 justify-items-center">
           {bottom.map((r) => (
             <ReelCard key={r.number} reel={r} />
           ))}
