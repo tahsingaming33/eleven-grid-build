@@ -36,6 +36,7 @@ const shopProducts: ShopProduct[] = [
     url: "https://tahsinmahmud.gumroad.com/l/teejayartzbreakdownvideo",
     category: "project-files",
     bestSeller: true,
+    tutorialUrl: "https://www.youtube.com/watch?v=enrHgez6iWA&t=35s",
   },
   {
     title: "Free UI Sound Effect Pack",
