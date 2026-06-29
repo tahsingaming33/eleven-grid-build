@@ -69,6 +69,8 @@
   --radius: 0.875rem;
   /* Warm white, ElevenLabs-like */
   --background: oklch(0.985 0.005 95);
+  --bg-shade: oklch(0.92 0.01 80 / 0.55);
+  --grain-opacity: 0.04;
   --foreground: oklch(0.16 0.006 60);
   --surface: oklch(0.97 0.006 90);
   --card: oklch(0.99 0.004 90);
@@ -106,6 +108,8 @@
 
 .dark {
   --background: oklch(0.13 0.003 270);
+  --bg-shade: oklch(0.28 0.006 270 / 0.55);
+  --grain-opacity: 0.06;
   --foreground: oklch(0.96 0.003 90);
   --surface: oklch(0.16 0.003 270);
   --card: oklch(0.17 0.004 270);
