@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Play, X } from "luc
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
     const p = getProject(params.slug);
-    const title = p ? `${p.title} — Motiondude` : "Case Study — Motiondude";
+    const title = p ? `${p.title}, Motiondude` : "Case Study, Motiondude";
     const desc = p?.description ?? "Case study";
     return {
       meta: [

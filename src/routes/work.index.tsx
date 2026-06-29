@@ -11,9 +11,9 @@ const PRESETS: NoisePreset[] = ["sunset", "ocean", "forest", "ember", "dusk"];
 export const Route = createFileRoute("/work/")({
   head: () => ({
     meta: [
-      { title: "Work — Motiondude" },
+      { title: "Work, Motiondude" },
       { name: "description", content: "Selected motion design work: brand films, commercials and motion systems." },
-      { property: "og:title", content: "Work — Motiondude" },
+      { property: "og:title", content: "Work, Motiondude" },
       { property: "og:description", content: "Selected brand films, commercials and motion systems." },
     ],
   }),

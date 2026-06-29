@@ -17,14 +17,14 @@ export const posts: Post[] = [
     date: "May 14, 2026",
     readTime: "6 min read",
     excerpt:
-      "Why the most expensive thing a film can do is stop moving — and how restraint pays back in attention.",
+      "Why the most expensive thing a film can do is stop moving, and how restraint pays back in attention.",
     toc: [
       { id: "the-cost", label: "The cost of motion" },
       { id: "the-frame", label: "Letting the frame breathe" },
       { id: "in-practice", label: "In practice" },
     ],
     body: [
-      "Motion costs attention. Every cut, every push-in, every animated element asks the viewer for a tiny payment. The cheaper your motion is to make, the more freely we spend it — and the more we end up paying.",
+      "Motion costs attention. Every cut, every push-in, every animated element asks the viewer for a tiny payment. The cheaper your motion is to make, the more freely we spend it, and the more we end up paying.",
       "Stillness is the opposite. A held shot says: I'm confident enough not to rush you. It's the cinematic equivalent of whitespace.",
       "Three things we ask of every shot before adding motion: does it earn the cut, does it earn the move, and does the viewer get a moment to feel anything?",
     ],
@@ -45,7 +45,7 @@ export const posts: Post[] = [
     body: [
       "A reliable color pipeline starts before the camera turns on. We calibrate every monitor in the room weekly and keep a single reference image taped to the wall.",
       "House LUTs do the heavy lifting. Three of them, named for the films they came from, cover 80% of the work. The rest is taste.",
-      "The review loop matters more than the tools. One screen, one viewer, one set of eyes — decisions, not opinions.",
+      "The review loop matters more than the tools. One screen, one viewer, one set of eyes, decisions, not opinions.",
     ],
   },
   {
@@ -55,7 +55,7 @@ export const posts: Post[] = [
     date: "March 11, 2026",
     readTime: "5 min read",
     excerpt:
-      "The handful of scripts and templates that quietly run our studio — and why we don't share most of them.",
+      "The handful of scripts and templates that quietly run our studio, and why we don't share most of them.",
     toc: [
       { id: "templates", label: "Project templates" },
       { id: "render", label: "Render farm" },
@@ -74,7 +74,7 @@ export const posts: Post[] = [
     date: "February 20, 2026",
     readTime: "4 min read",
     excerpt:
-      "A short brief about long sentences — and the unreasonable importance of the words underneath the picture.",
+      "A short brief about long sentences, and the unreasonable importance of the words underneath the picture.",
     toc: [
       { id: "rhythm", label: "Rhythm first" },
       { id: "verbs", label: "Verbs, not adjectives" },

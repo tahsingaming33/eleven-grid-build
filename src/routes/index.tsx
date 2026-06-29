@@ -13,9 +13,9 @@ import maagnusIcon from "@/assets/logos/maagnus-icon-safe.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Motiondude — Cinematic motion design" },
+      { title: "Motiondude, Cinematic motion design" },
       { name: "description", content: "Freelance motion designer making cinematic brand films, commercials and motion systems for ambitious brands." },
-      { property: "og:title", content: "Motiondude — Cinematic motion design" },
+      { property: "og:title", content: "Motiondude, Cinematic motion design" },
       { property: "og:description", content: "Cinematic motion design for ambitious brands." },
     ],
   }),
@@ -100,9 +100,9 @@ function TrustedBy() {
     darkFilterClass?: string;
   }[] = [
     { src: quakesLogo.url, name: "Quakes Legacy", iconWidthPct: 20 },
-    // pure-black mono icon — flip to white in dark mode
+    // pure-black mono icon, flip to white in dark mode
     { src: masahaLogo.url, name: "Masaha", iconWidthPct: 28, darkFilterClass: "dark:[filter:brightness(0)_invert(1)]" },
-    // black disc + white "C" — plain invert(1) flips disc→white and C→black, keeping detail
+    // black disc + white "C", plain invert(1) flips disc→white and C→black, keeping detail
     { src: elitesLogo.url, name: "Elites Crypto", iconWidthPct: 26, darkFilterClass: "dark:[filter:invert(1)]" },
     // isolated full icon with transparent padding, so no edge gets cropped
     { src: maagnusIcon.url, name: "Maagnus", fullImage: true, widthClass: "w-11" },
@@ -158,7 +158,7 @@ function WhatIDo() {
     {
       icon: Sparkles,
       title: "Commercials",
-      body: "Launch spots and product films, cut once and delivered in every format you need — 60, 30, 15, 6.",
+      body: "Launch spots and product films, cut once and delivered in every format you need, 60, 30, 15, 6.",
     },
     {
       icon: Layers,
@@ -197,12 +197,12 @@ function WhatIDo() {
 
 function FAQ() {
   const items = [
-    { q: "Why is a brand film worth more than a regular video?", a: "A brand film is engineered for recall, positioning, and emotional resonance — not just views. It compounds in value because every share reinforces your brand voice, not just your message." },
-    { q: "Why not just hire a video agency for less?", a: "Agencies optimize for delivery. I optimize for outcome. You work with one creative director from concept to final frame — no account managers, no telephone game, no rotating team." },
-    { q: "Can I just use stock footage and templates?", a: "You can. But so can your competitors. Templates produce videos that look like everyone else's — which is the opposite of what motion design is supposed to do." },
-    { q: "How does a brand film actually increase conversions?", a: "It removes ambiguity. Visitors get instant clarity on what you do, who it's for, and why it matters — usually within the first 8 seconds. That's where conversion lifts come from." },
+    { q: "Why is a brand film worth more than a regular video?", a: "A brand film is engineered for recall, positioning, and emotional resonance, not just views. It compounds in value because every share reinforces your brand voice, not just your message." },
+    { q: "Why not just hire a video agency for less?", a: "Agencies optimize for delivery. I optimize for outcome. You work with one creative director from concept to final frame, no account managers, no telephone game, no rotating team." },
+    { q: "Can I just use stock footage and templates?", a: "You can. But so can your competitors. Templates produce videos that look like everyone else's, which is the opposite of what motion design is supposed to do." },
+    { q: "How does a brand film actually increase conversions?", a: "It removes ambiguity. Visitors get instant clarity on what you do, who it's for, and why it matters, usually within the first 8 seconds. That's where conversion lifts come from." },
     { q: "Why is your process different from other motion designers?", a: "I start with strategy, not After Effects. Every frame is justified by a business goal before a single keyframe is drawn." },
-    { q: "How do you position a brand as premium through video?", a: "Restraint. Premium feels expensive because of what's left out — empty space, slower pacing, deliberate typography, restraint in motion. I design for that." },
+    { q: "How do you position a brand as premium through video?", a: "Restraint. Premium feels expensive because of what's left out, empty space, slower pacing, deliberate typography, restraint in motion. I design for that." },
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (

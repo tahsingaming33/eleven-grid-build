@@ -4,9 +4,9 @@ import { Section, Eyebrow } from "@/components/site/Grid";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Motiondude" },
-      { name: "description", content: "About Motiondude — a freelance motion designer working with calm, exacting brands." },
-      { property: "og:title", content: "About — Motiondude" },
+      { title: "About, Motiondude" },
+      { name: "description", content: "About Motiondude, a freelance motion designer working with calm, exacting brands." },
+      { property: "og:title", content: "About, Motiondude" },
       { property: "og:description", content: "A freelance motion designer working with calm, exacting brands." },
     ],
   }),
@@ -37,7 +37,7 @@ function AboutPage() {
           </div>
           <div className="space-y-6 text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
-              I'm a freelance motion designer working with brands, agencies and software companies. My practice is small on purpose — one director, one editor, one set of taste.
+              I'm a freelance motion designer working with brands, agencies and software companies. My practice is small on purpose, one director, one editor, one set of taste.
             </p>
             <p>
               For the last decade I've made brand films, commercials and motion systems for clients who care about craft. The work tends to be calm, restrained and unhurried.
