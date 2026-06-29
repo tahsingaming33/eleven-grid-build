@@ -36,14 +36,28 @@ function AboutPage() {
           </div>
           <div className="space-y-6 text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
-              I'm a freelance motion designer working with brands, agencies and software companies. My practice is small on purpose, one director, one editor, one set of taste.
+              Hi, I'm Tahsin Mahmud, a freelance motion designer. I work with brands, agencies and software companies, turning ideas into clean, high impact motion.
             </p>
             <p>
-              For the last decade I've made brand films, commercials and motion systems for clients who care about craft. The work tends to be calm, restrained and unhurried.
+              I have 2 years of experience making brand films, explainer videos and motion systems for clients who care about craft. The work tends to be calm, intentional and precise.
             </p>
             <p>
-              Outside of client projects, I write about the practice, sell a small shop of tools and templates, and travel for shoots.
+              Outside of client projects I make tutorials on YouTube, create personal brand films for the brands I love, and build plugins and templates that help other motion designers upgrade their skills.
             </p>
+            <div className="grid grid-cols-3 gap-6 pt-6">
+              <div>
+                <div className="eyebrow">Based in</div>
+                <div className="mt-2 text-sm font-medium tracking-[-0.01em] text-[var(--color-foreground)]">Bangladesh</div>
+              </div>
+              <div>
+                <div className="eyebrow">Experience</div>
+                <div className="mt-2 text-sm font-medium tracking-[-0.01em] text-[var(--color-foreground)]">2 Years</div>
+              </div>
+              <div>
+                <div className="eyebrow">Languages</div>
+                <div className="mt-2 text-sm font-medium tracking-[-0.01em] text-[var(--color-foreground)]">English, Hindi, Bangla</div>
+              </div>
+            </div>
           </div>
         </div>
       </Section>
