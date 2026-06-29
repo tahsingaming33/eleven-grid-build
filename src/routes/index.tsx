@@ -122,13 +122,13 @@ function TrustedBy() {
                     src={l.src}
                     alt=""
                     aria-hidden="true"
-                    className={`h-6 w-6 sm:h-9 sm:${l.widthClass ?? "w-10"} shrink-0 object-contain ${l.darkFilterClass ?? ""}`}
+                    className={`h-6 w-6 shrink-0 object-contain sm:h-9 sm:w-11 ${l.darkFilterClass ?? ""}`}
                   />
                 ) : (
                   <div
                     role="img"
                     aria-label={l.name}
-                    className={`h-6 w-6 sm:h-9 sm:${l.widthClass ?? "w-10"} shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
+                    className={`h-6 w-6 shrink-0 bg-no-repeat sm:h-9 sm:w-10 ${l.darkFilterClass ?? ""}`}
                     style={{
                       backgroundImage: `url(${l.src})`,
                       backgroundSize: `${sizePct}% auto`,
