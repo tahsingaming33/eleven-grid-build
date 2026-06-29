@@ -8,7 +8,6 @@ import { useRef, useState } from "react";
 import quakesLogo from "@/assets/logos/quakes.png.asset.json";
 import masahaLogo from "@/assets/logos/masaha.png.asset.json";
 import elitesLogo from "@/assets/logos/elites.png.asset.json";
-import diamondLogo from "@/assets/logos/diamond.png.asset.json";
 import maagnusIcon from "@/assets/logos/maagnus-icon-safe.png.asset.json";
 
 export const Route = createFileRoute("/")({
