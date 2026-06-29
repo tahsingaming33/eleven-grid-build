@@ -109,8 +109,8 @@
 
 .dark {
   --background: oklch(0.155 0.004 270);
-  --bg-shade: oklch(0.36 0.008 270 / 0.55);
-  --bg-shade-2: oklch(0.26 0.006 270 / 0.45);
+  --bg-shade: oklch(0.36 0.008 270 / 0.32);
+  --bg-shade-2: oklch(0.26 0.006 270 / 0.25);
   --grain-opacity: 0.05;
   --foreground: oklch(0.96 0.003 90);
   --surface: oklch(0.185 0.004 270);
@@ -273,7 +273,7 @@
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(ellipse 70% 60% at 50% 15%, var(--bg-shade), transparent 70%);
+    background: radial-gradient(ellipse 70% 60% at 50% 15%, color-mix(in oklab, var(--bg-shade) 40%, transparent), transparent 70%);
   }
   &::after {
     content: "";
@@ -283,7 +283,7 @@
     z-index: 0;
     background-image: radial-gradient(circle, var(--foreground) 0.5px, transparent 1px);
     background-size: 4px 4px;
-    opacity: 0.035;
+    opacity: 0.022;
     -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black, transparent 80%);
     mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black, transparent 80%);
   }
