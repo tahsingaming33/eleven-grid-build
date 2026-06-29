@@ -9,21 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ShopRouteImport } from './routes/shop'
 import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
+import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as ShopScriptRouteImport } from './routes/shop.script'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const ShopRoute = ShopRouteImport.update({
-  id: '/shop',
-  path: '/shop',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const InquiryRoute = InquiryRouteImport.update({
   id: '/inquiry',
   path: '/inquiry',
@@ -49,15 +45,25 @@ const WorkIndexRoute = WorkIndexRouteImport.update({
   path: '/work/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
   id: '/work/$slug',
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopScriptRoute = ShopScriptRouteImport.update({
+  id: '/shop/script',
+  path: '/shop/script',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopSlugRoute = ShopSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ShopRoute,
+  id: '/shop/$slug',
+  path: '/shop/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
@@ -70,10 +76,11 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
   '/inquiry': typeof InquiryRoute
-  '/shop': typeof ShopRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/shop/script': typeof ShopScriptRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/shop/': typeof ShopIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
@@ -81,10 +88,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
   '/inquiry': typeof InquiryRoute
-  '/shop': typeof ShopRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/shop/script': typeof ShopScriptRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/shop': typeof ShopIndexRoute
   '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
@@ -93,10 +101,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
   '/inquiry': typeof InquiryRoute
-  '/shop': typeof ShopRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/shop/script': typeof ShopScriptRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/shop/': typeof ShopIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
@@ -106,10 +115,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/blog'
     | '/inquiry'
-    | '/shop'
     | '/blog/$slug'
     | '/shop/$slug'
+    | '/shop/script'
     | '/work/$slug'
+    | '/shop/'
     | '/work/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -117,10 +127,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/blog'
     | '/inquiry'
-    | '/shop'
     | '/blog/$slug'
     | '/shop/$slug'
+    | '/shop/script'
     | '/work/$slug'
+    | '/shop'
     | '/work'
   id:
     | '__root__'
@@ -128,10 +139,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/blog'
     | '/inquiry'
-    | '/shop'
     | '/blog/$slug'
     | '/shop/$slug'
+    | '/shop/script'
     | '/work/$slug'
+    | '/shop/'
     | '/work/'
   fileRoutesById: FileRoutesById
 }
@@ -140,20 +152,15 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRouteWithChildren
   InquiryRoute: typeof InquiryRoute
-  ShopRoute: typeof ShopRouteWithChildren
+  ShopSlugRoute: typeof ShopSlugRoute
+  ShopScriptRoute: typeof ShopScriptRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  ShopIndexRoute: typeof ShopIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/shop': {
-      id: '/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof ShopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/inquiry': {
       id: '/inquiry'
       path: '/inquiry'
@@ -189,6 +196,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/$slug': {
       id: '/work/$slug'
       path: '/work/$slug'
@@ -196,12 +210,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/script': {
+      id: '/shop/script'
+      path: '/shop/script'
+      fullPath: '/shop/script'
+      preLoaderRoute: typeof ShopScriptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/$slug': {
       id: '/shop/$slug'
-      path: '/$slug'
+      path: '/shop/$slug'
       fullPath: '/shop/$slug'
       preLoaderRoute: typeof ShopSlugRouteImport
-      parentRoute: typeof ShopRoute
+      parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -223,23 +244,15 @@ const BlogRouteChildren: BlogRouteChildren = {
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
-interface ShopRouteChildren {
-  ShopSlugRoute: typeof ShopSlugRoute
-}
-
-const ShopRouteChildren: ShopRouteChildren = {
-  ShopSlugRoute: ShopSlugRoute,
-}
-
-const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogRoute: BlogRouteWithChildren,
   InquiryRoute: InquiryRoute,
-  ShopRoute: ShopRouteWithChildren,
+  ShopSlugRoute: ShopSlugRoute,
+  ShopScriptRoute: ShopScriptRoute,
   WorkSlugRoute: WorkSlugRoute,
+  ShopIndexRoute: ShopIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
