@@ -28,12 +28,10 @@ function AboutPage() {
       <Section size="md">
         <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
           <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-            <div
-              className="h-full w-full"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 40% 30%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%)",
-              }}
+            <img
+              src={portraitAsset.url}
+              alt="Tahsin Mahmud"
+              className="h-full w-full object-cover"
             />
           </div>
           <div className="space-y-6 text-base leading-relaxed text-muted-foreground md:text-lg">
