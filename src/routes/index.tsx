@@ -117,7 +117,7 @@ function TrustedBy() {
                 <div
                   role="img"
                   aria-label={l.name}
-                  className={`h-9 w-10 shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
+                  className={`h-9 ${l.widthClass ?? "w-10"} shrink-0 bg-no-repeat ${l.darkFilterClass ?? ""}`}
                   style={{
                     backgroundImage: `url(${l.src})`,
                     backgroundSize: `${sizePct}% auto`,
