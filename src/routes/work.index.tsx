@@ -39,8 +39,11 @@ function WorkPage() {
               <InteractiveCard className="group bg-[var(--color-card)] p-6">
                 <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
                   {p.comingSoon ? (
-                    <div className="absolute inset-0 grid place-items-center bg-[var(--color-surface)]">
-                      <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground/80">
+                    <div
+                      className="absolute inset-0 grid place-items-center"
+                      style={{ backgroundColor: "#FF90E8" }}
+                    >
+                      <span className="text-xl font-bold tracking-[-0.01em] text-black">
                         Coming Soon
                       </span>
                     </div>
