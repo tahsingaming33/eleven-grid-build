@@ -320,12 +320,20 @@ function CaseStudy() {
             <ChevronRight className="h-5 w-5" />
           </button>
           <div className="w-full max-w-5xl">
-            <div
-              className="aspect-video w-full rounded-xl border border-white/10"
-              style={{
-                background: `radial-gradient(ellipse at 40% 30%, color-mix(in oklab, var(--accent) 18%, transparent), #0a0a0a 70%)`,
-              }}
-            />
+            {project.storyboard[lightbox].image ? (
+              <img
+                src={project.storyboard[lightbox].image}
+                alt={project.storyboard[lightbox].caption}
+                className="aspect-video w-full rounded-xl border border-white/10 object-cover"
+              />
+            ) : (
+              <div
+                className="aspect-video w-full rounded-xl border border-white/10"
+                style={{
+                  background: `radial-gradient(ellipse at 40% 30%, color-mix(in oklab, var(--accent) 18%, transparent), #0a0a0a 70%)`,
+                }}
+              />
+            )}
             <div className="mt-4 text-center text-[12px] font-mono tracking-[0.18em] uppercase text-white/70">
               {String(lightbox + 1).padStart(2, "0")} / {String(project.storyboard.length).padStart(2, "0")} · {project.storyboard[lightbox].caption}
             </div>
