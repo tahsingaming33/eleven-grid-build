@@ -68,11 +68,11 @@ const shopProducts: ShopProduct[] = [
     category: "project-files",
   },
   {
-    title: "Script Name",
+    title: "CursorFollow",
     price: "AE Script",
     description:
       "A custom After Effects script that speeds up your workflow.",
-    thumbnail: "",
+    thumbnail: cursorFollowThumb.url,
     url: "/shop/script",
     internal: true,
     category: "scripts-plugins",
