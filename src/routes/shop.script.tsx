@@ -7,7 +7,7 @@ import afterVideo from "@/assets/script/after.mp4.asset.json";
 export const Route = createFileRoute("/shop/script")({
   head: () => ({
     meta: [
-      { title: "Script Name, Motiondude" },
+      { title: "CursorFollow, Motiondude" },
       {
         name: "description",
         content:
