@@ -1,3 +1,14 @@
+import maagnus01 from "@/assets/maagnus/01.png.asset.json";
+import maagnus02 from "@/assets/maagnus/02.png.asset.json";
+import maagnus03 from "@/assets/maagnus/03.png.asset.json";
+import maagnus04 from "@/assets/maagnus/04.png.asset.json";
+import maagnus05 from "@/assets/maagnus/05.png.asset.json";
+import maagnus06 from "@/assets/maagnus/06.png.asset.json";
+import maagnus07 from "@/assets/maagnus/07.png.asset.json";
+import maagnus08 from "@/assets/maagnus/08.png.asset.json";
+import maagnus09 from "@/assets/maagnus/09.png.asset.json";
+import maagnus10 from "@/assets/maagnus/10.png.asset.json";
+
 export interface Project {
   slug: string;
   title: string;
