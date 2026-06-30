@@ -8,7 +8,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
-      <main className="relative">
+      <main className="relative pt-16">
         <GridFrame>
           {children}
           <SocialHandles />
