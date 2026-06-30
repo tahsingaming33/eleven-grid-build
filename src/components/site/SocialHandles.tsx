@@ -1,32 +1,32 @@
-import { SiInstagram, SiX, SiLinkedin, SiWhatsapp } from "react-icons/si";
+import { FaInstagram, FaXTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { Section, Eyebrow } from "./Grid";
 
 type Social = {
   label: string;
   href: string;
-  Icon: typeof SiInstagram;
+  Icon: typeof FaInstagram;
 };
 
 const socials: Social[] = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/motiondudehere/",
-    Icon: SiInstagram,
+    Icon: FaInstagram,
   },
   {
     label: "X",
     href: "https://x.com/motiondudegone",
-    Icon: SiX,
+    Icon: FaXTwitter,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/tahsin-mahmud-bdt/",
-    Icon: SiLinkedin,
+    Icon: FaLinkedin,
   },
   {
     label: "WhatsApp",
     href: "https://wa.me/8801940295660",
-    Icon: SiWhatsapp,
+    Icon: FaWhatsapp,
   },
 ];
 
