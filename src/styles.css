@@ -350,30 +350,3 @@
 .dark .social-line-h,
 .dark .social-line-v { color: rgba(255, 255, 255, 0.15); }
 
-/* Inverted footer: opposite of theme */
-:root {
-  --footer-bg: #0b0b0c;
-  --footer-fg: #f4f4f2;
-  --footer-muted: rgba(244, 244, 242, 0.6);
-  --footer-eyebrow: rgba(244, 244, 242, 0.55);
-  --footer-divider: rgba(255, 255, 255, 0.12);
-}
-.dark {
-  --footer-bg: #f4f4f2;
-  --footer-fg: #0a0a0a;
-  --footer-muted: rgba(10, 10, 10, 0.62);
-  --footer-eyebrow: rgba(10, 10, 10, 0.55);
-  --footer-divider: rgba(0, 0, 0, 0.12);
-}
-.footer-inverted {
-  background-color: var(--footer-bg);
-  color: var(--footer-fg);
-}
-.footer-muted { color: var(--footer-muted); }
-.footer-eyebrow { color: var(--footer-eyebrow) !important; }
-.footer-link {
-  color: var(--footer-muted);
-  transition: color 200ms ease;
-}
-.footer-link:hover { color: var(--footer-fg); }
-
