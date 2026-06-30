@@ -7,7 +7,7 @@ import afterVideo from "@/assets/script/after.mp4.asset.json";
 export const Route = createFileRoute("/shop/script")({
   head: () => ({
     meta: [
-      { title: "Script Name, Motiondude" },
+      { title: "CursorFollow, Motiondude" },
       {
         name: "description",
         content:
@@ -33,7 +33,7 @@ function ScriptPage() {
         <header className="mt-12">
           <Eyebrow>AE Script</Eyebrow>
           <h1 className="mt-5 text-balance text-4xl font-medium tracking-[-0.02em] md:text-6xl">
-            Script Name
+            CursorFollow
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground md:text-xl">
             A custom After Effects script that speeds up your motion design workflow.
