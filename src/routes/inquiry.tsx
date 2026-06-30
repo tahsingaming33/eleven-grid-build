@@ -43,6 +43,28 @@ const initial: Fields = {
   agree: false,
 };
 
+const goalOptions = [
+  "Visualize a new feature launch",
+  "High-converting brand ad",
+  "Landing page explainer",
+  "Product demo / Tutorial series",
+  "Long-term Collaboration",
+];
+
+const stateOptions = [
+  "We have a finished script/storyboard",
+  "We have a rough idea \u2192 need creative direction",
+  "We are starting from scratch",
+];
+
+const investmentOptions = [
+  "$500 - $700",
+  "$700 - $1,000",
+  "$1,000 - $1,500",
+  "$1,500 - $2,000",
+  "$2,000+",
+];
+
 function InquiryPage() {
   const [data, setData] = useState<Fields>(initial);
   const [submitted, setSubmitted] = useState(false);
@@ -52,7 +74,18 @@ function InquiryPage() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!data.name.trim() || !data.company.trim() || !data.email.trim()) {
+    if (
+      !data.name.trim() ||
+      !data.phone.trim() ||
+      !data.company.trim() ||
+      !data.website.trim() ||
+      !data.goal ||
+      !data.state ||
+      !data.investment ||
+      !data.deadline ||
+      !data.notes.trim() ||
+      !data.email.trim()
+    ) {
       setError("Please fill in the required fields.");
       return;
     }
@@ -100,26 +133,55 @@ function InquiryPage() {
             className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 md:p-10"
           >
             <div className="grid gap-6 md:grid-cols-2">
-              <Field label="Name" required value={data.name} onChange={(v) => set("name", v)} placeholder="Your full name" />
-              <Field label="Phone" value={data.phone} onChange={(v) => set("phone", v)} placeholder="+880…" type="tel" />
-              <Field label="Company / Brand" required value={data.company} onChange={(v) => set("company", v)} placeholder={'ex. "OpenAI"'} />
-              <Field label="Website" value={data.website} onChange={(v) => set("website", v)} placeholder="https://" type="url" />
-              <Field label="Primary Goal" value={data.goal} onChange={(v) => set("goal", v)} placeholder="Brand film, explainer, identity…" />
-              <Field label="Production State" value={data.state} onChange={(v) => set("state", v)} placeholder="Concept / Script / Storyboard ready" />
-              <Field label="Investment" value={data.investment} onChange={(v) => set("investment", v)} placeholder="$5k to $25k+" />
-              <Field label="Deadline" value={data.deadline} onChange={(v) => set("deadline", v)} placeholder="ex. Q3 2026" />
+              <Field label="Your Name" required value={data.name} onChange={(v) => set("name", v)} placeholder="Your Name" />
+              <Field label="Your Phone Number" required value={data.phone} onChange={(v) => set("phone", v)} placeholder="Phone" type="tel" />
+              <Field label="Company Name" required value={data.company} onChange={(v) => set("company", v)} placeholder="Company Name" />
+              <Field label="Company Website" required value={data.website} onChange={(v) => set("website", v)} placeholder="https://yourbrand.com" type="url" />
+              <SelectField
+                label="What is your primary goal?"
+                required
+                value={data.goal}
+                onChange={(v) => set("goal", v)}
+                placeholder="e.g. Product Explainer"
+                options={goalOptions}
+              />
+              <SelectField
+                label="Current production state?"
+                required
+                value={data.state}
+                onChange={(v) => set("state", v)}
+                placeholder="Do you have a script/storyboard?"
+                options={stateOptions}
+              />
+              <SelectField
+                label="Estimated Investment"
+                required
+                value={data.investment}
+                onChange={(v) => set("investment", v)}
+                placeholder="Select budget range"
+                options={investmentOptions}
+              />
+              <Field
+                label="Desired Deadline"
+                required
+                value={data.deadline}
+                onChange={(v) => set("deadline", v)}
+                placeholder="Select preferred date"
+                type="date"
+              />
               <div className="md:col-span-2">
-                <FieldLabel>Anything else I should know?</FieldLabel>
+                <FieldLabel>Please provide more details about your animation project *</FieldLabel>
                 <textarea
                   value={data.notes}
                   onChange={(e) => set("notes", e.target.value)}
-                  placeholder="Project context, references, links…"
+                  placeholder="Design inspirations, short description of the project etc."
                   rows={5}
+                  required
                   className="mt-2 w-full resize-y rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-foreground/40 focus:outline-none"
                 />
               </div>
               <div className="md:col-span-2">
-                <Field label="Work Email" required value={data.email} onChange={(v) => set("email", v)} placeholder="you@company.com" type="email" />
+                <Field label="Work Email" required value={data.email} onChange={(v) => set("email", v)} placeholder="Work Email" type="email" />
               </div>
             </div>
 
@@ -130,8 +192,20 @@ function InquiryPage() {
                 onChange={(e) => set("agree", e.target.checked)}
                 className="mt-0.5 h-4 w-4 shrink-0 rounded border-[var(--color-border)] bg-[var(--color-surface)] accent-foreground"
               />
-              <span>I agree to the privacy policy and how my information will be used.</span>
+              <span>I agree to the processing of my data in accordance with the Privacy Policy & Imprint</span>
             </label>
+
+            <p className="mt-3 text-sm text-muted-foreground">
+              → Also have a look at my previous work on{" "}
+              <a
+                href="https://www.instagram.com/motiondudehere/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline underline-offset-4 hover:opacity-80"
+              >
+                Instagram
+              </a>
+            </p>
 
             {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
 
@@ -181,6 +255,50 @@ function Field({
         required={required}
         className="mt-2 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-foreground/40 focus:outline-none"
       />
+    </div>
+  );
+}
+
+function SelectField({
+  label,
+  value,
+  onChange,
+  placeholder,
+  required,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  required?: boolean;
+  options: string[];
+}) {
+  return (
+    <div>
+      <FieldLabel>
+        {label}
+        {required && " *"}
+      </FieldLabel>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required={required}
+        className="mt-2 w-full appearance-none rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] bg-[length:16px_16px] bg-[right_1rem_center] bg-no-repeat px-4 py-3 pr-10 text-sm text-foreground focus:border-foreground/40 focus:outline-none"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>\")",
+        }}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
