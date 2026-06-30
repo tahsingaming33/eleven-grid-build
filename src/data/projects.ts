@@ -146,6 +146,7 @@ export const projects: Project[] = [
     production: "In-house",
     purpose: "Audience Growth",
     cta: "tahsin@motiondude.online",
+    thumbnail: "/__l5e/assets-v1/389c849e-ad2c-4767-bf8b-85e24baf4610/elite-crypto-thumb.png",
     intro:
       "A recurring motion series built to make complex crypto concepts feel calm and approachable.",
     strategy: {
