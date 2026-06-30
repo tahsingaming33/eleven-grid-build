@@ -4,12 +4,10 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -81,15 +79,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Motiondude, Cinematic motion design" },
+      { title: "Motiondude - Motion Designer" },
       { name: "description", content: "Freelance motion designer crafting cinematic brand films, commercials and motion systems for ambitious brands." },
       { name: "author", content: "Motiondude" },
-      { property: "og:title", content: "Motiondude, Cinematic motion design" },
+      { property: "og:title", content: "Motiondude - Motion Designer" },
       { property: "og:description", content: "Freelance motion designer crafting cinematic brand films, commercials and motion systems for ambitious brands." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@motiondude" },
-      { name: "twitter:title", content: "Motiondude, Cinematic motion design" },
+      { name: "twitter:title", content: "Motiondude - Motion Designer" },
       { name: "twitter:description", content: "Freelance motion designer crafting cinematic brand films, commercials and motion systems for ambitious brands." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1fa3c668-b601-4ea7-a590-810a56a3fb74/id-preview-325b6d32--a0e4f0eb-3940-4a99-a682-8b5a00d965ca.lovable.app-1782671251298.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1fa3c668-b601-4ea7-a590-810a56a3fb74/id-preview-325b6d32--a0e4f0eb-3940-4a99-a682-8b5a00d965ca.lovable.app-1782671251298.png" },
@@ -134,51 +132,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-
-  // Crossfade between pages with a full-bleed overlay so we never show two
-  // different route contents at once. On every pathname change we cover the
-  // viewport (0.25s), scroll to top, then uncover (0.25s) — totalling 0.5s.
-  const [covering, setCovering] = useState(false);
-  const isFirst = useRef(true);
-
-  useEffect(() => {
-    if (isFirst.current) {
-      isFirst.current = false;
-      return;
-    }
-    setCovering(true);
-    const t = window.setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0 });
-      setCovering(false);
-    }, 250);
-    return () => window.clearTimeout(t);
-  }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SiteShell>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
-          <AnimatePresence>
-            {covering && (
-              <motion.div
-                key="page-transition-veil"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                aria-hidden
-                style={{
-                  position: "fixed",
-                  inset: 0,
-                  zIndex: 9999,
-                  pointerEvents: "none",
-                  background: "var(--background, #0C0C0D)",
-                }}
-              />
-            )}
-          </AnimatePresence>
         </SiteShell>
       </ThemeProvider>
     </QueryClientProvider>
