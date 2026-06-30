@@ -33,8 +33,8 @@ export function Footer() {
             <div className="eyebrow">Connect</div>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <a className="text-muted-foreground hover:text-foreground" href="mailto:hello@motiondude.com">
-                  hello@motiondude.com
+                <a className="text-muted-foreground hover:text-foreground" href="mailto:tahasinmahmud12@gmail.com">
+                  tahasinmahmud12@gmail.com
                 </a>
               </li>
               <li>
