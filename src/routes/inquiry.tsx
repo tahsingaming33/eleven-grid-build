@@ -6,6 +6,13 @@ import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_CONFIG = {
+  SERVICE_ID: "service_9ck99sf",
+  TEMPLATE_ID: "template_4vbztfc",
+  PUBLIC_KEY: "9bGP8MzDiD46xuquV",
+};
 
 export const Route = createFileRoute("/inquiry")({
   head: () => ({
@@ -73,10 +80,11 @@ function InquiryPage() {
   const [data, setData] = useState<Fields>(initial);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
 
   const set = <K extends keyof Fields>(k: K, v: Fields[K]) => setData((d) => ({ ...d, [k]: v }));
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (
       !data.name.trim() ||
@@ -98,15 +106,33 @@ function InquiryPage() {
       return;
     }
     setError(null);
-    // Persist locally for now; email integration to come later.
+    setSending(true);
     try {
-      const all = JSON.parse(localStorage.getItem("md_inquiries") || "[]");
-      all.push({ ...data, at: new Date().toISOString() });
-      localStorage.setItem("md_inquiries", JSON.stringify(all));
-    } catch {
-      /* noop */
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        {
+          name: data.name,
+          phone: data.phone,
+          company: data.company,
+          website: data.website,
+          primary_goal: data.goal,
+          production_state: data.state,
+          investment: data.investment,
+          deadline: data.deadline,
+          details: data.notes,
+          email: data.email,
+        },
+        EMAILJS_CONFIG.PUBLIC_KEY,
+      );
+      setSubmitted(true);
+      setData(initial);
+    } catch (err) {
+      console.error("EmailJS send failed:", err);
+      setError("Something went wrong. Please try again or email me directly.");
+    } finally {
+      setSending(false);
     }
-    setSubmitted(true);
   }
 
   return (
@@ -126,9 +152,9 @@ function InquiryPage() {
         {submitted ? (
           <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-10 text-center md:p-14">
             <CheckCircle2 className="mx-auto h-10 w-10 text-foreground/80" />
-            <h2 className="mt-5 text-2xl font-medium tracking-[-0.01em]">Thanks, {data.name.split(" ")[0] || "friend"}.</h2>
+            <h2 className="mt-5 text-2xl font-medium tracking-[-0.01em]">Thanks, your inquiry has been sent.</h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-              Your inquiry has been received. I'll get back to you at {data.email} within 2 business days.
+              I will get back to you within 3 work days.
             </p>
           </div>
         ) : (
@@ -214,9 +240,10 @@ function InquiryPage() {
 
             <button
               type="submit"
-              className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground text-sm font-semibold text-background transition-opacity hover:opacity-90"
+              disabled={sending}
+              className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground text-sm font-semibold text-background transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Check Availability <ArrowRight className="h-4 w-4" />
+              {sending ? "Sending..." : (<>Check Availability <ArrowRight className="h-4 w-4" /></>)}
             </button>
           </form>
         )}
