@@ -144,7 +144,7 @@ function InquiryPage() {
           <span className="text-foreground/35">project.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-          Share your vision below. I'll get back to you within 2 business days.
+          Share your vision below. I'll get back to you within 24 hours.
         </p>
       </div>
 
