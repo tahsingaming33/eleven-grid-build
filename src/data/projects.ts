@@ -119,7 +119,7 @@ export const projects: Project[] = [
     purpose: "Self-Initiated / Concept",
     cta: "tahasinmahmud12@gmail.com",
     vimeoId: "1197933363",
-    thumbnail: "/__l5e/assets-v1/949bd922-a0c2-4a95-952e-dd17885fee76/lovable-thumb.png",
+    thumbnail: "/media/projects/lovable-thumb.png",
     intro:
       "What if the process of building something could become the story itself? This video is that experiment.",
     strategy: {
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     production: "In-house",
     purpose: "Audience Growth",
     cta: "tahasinmahmud12@gmail.com",
-    thumbnail: "/__l5e/assets-v1/389c849e-ad2c-4767-bf8b-85e24baf4610/elite-crypto-thumb.png",
+    thumbnail: "/media/projects/elite-crypto-thumb.png",
     intro:
       "A recurring motion series built to make complex crypto concepts feel calm and approachable.",
     strategy: {
