@@ -229,6 +229,62 @@ function FieldLabel({ children }: { children: React.ReactNode }) {
   return <div className="eyebrow text-[10px]">{children}</div>;
 }
 
+function DateField({
+  label,
+  value,
+  onChange,
+  placeholder,
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  required?: boolean;
+}) {
+  const selected = value ? new Date(value) : undefined;
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <FieldLabel>
+        {label}
+        {required && " *"}
+      </FieldLabel>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            type="button"
+            className={cn(
+              "mt-2 flex w-full items-center justify-between rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-left text-sm focus:border-foreground/40 focus:outline-none",
+              selected ? "text-foreground" : "text-muted-foreground/60"
+            )}
+          >
+            <span>{selected ? format(selected, "MMM d, yyyy") : placeholder}</span>
+            <CalendarIcon className="h-4 w-4 text-muted-foreground" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent
+          align="start"
+          className="w-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-0 shadow-xl"
+        >
+          <Calendar
+            mode="single"
+            selected={selected}
+            onSelect={(d) => {
+              if (d) {
+                onChange(format(d, "yyyy-MM-dd"));
+                setOpen(false);
+              }
+            }}
+            initialFocus
+            className={cn("p-3 pointer-events-auto")}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
+}
+
 function Field({
   label,
   value,
