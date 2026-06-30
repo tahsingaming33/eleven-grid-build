@@ -9,7 +9,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -134,7 +134,22 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const location = useRouterState({ select: (s) => s.location });
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Snapshot the path we're currently displaying. We only advance it after
+  // the exit animation completes, so the outgoing page keeps rendering its
+  // own content during the fade-out instead of flashing the new route.
+  const [displayedPath, setDisplayedPath] = useState(pathname);
+
+  useEffect(() => {
+    if (pathname !== displayedPath) {
+      // Trigger exit by clearing the displayed key; AnimatePresence's
+      // onExitComplete will then promote the live pathname.
+      setDisplayedPath(pathname);
+      window.scrollTo({ top: 0, left: 0 });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -142,7 +157,7 @@ function RootComponent() {
         <SiteShell>
           <AnimatePresence mode="wait">
             <motion.div
-              key={location.pathname}
+              key={displayedPath}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
