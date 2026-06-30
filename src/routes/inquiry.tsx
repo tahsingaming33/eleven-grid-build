@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Section } from "@/components/site/Grid";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CalendarIcon, CheckCircle2 } from "lucide-react";
+import { format } from "date-fns";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/inquiry")({
   head: () => ({
@@ -161,13 +165,12 @@ function InquiryPage() {
                 placeholder="Select budget range"
                 options={investmentOptions}
               />
-              <Field
+              <DateField
                 label="Desired Deadline"
                 required
                 value={data.deadline}
                 onChange={(v) => set("deadline", v)}
                 placeholder="Select preferred date"
-                type="date"
               />
               <div className="md:col-span-2">
                 <FieldLabel>Please provide more details about your animation project *</FieldLabel>
@@ -224,6 +227,62 @@ function InquiryPage() {
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return <div className="eyebrow text-[10px]">{children}</div>;
+}
+
+function DateField({
+  label,
+  value,
+  onChange,
+  placeholder,
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  required?: boolean;
+}) {
+  const selected = value ? new Date(value) : undefined;
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <FieldLabel>
+        {label}
+        {required && " *"}
+      </FieldLabel>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            type="button"
+            className={cn(
+              "mt-2 flex w-full items-center justify-between rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-left text-sm focus:border-foreground/40 focus:outline-none",
+              selected ? "text-foreground" : "text-muted-foreground/60"
+            )}
+          >
+            <span>{selected ? format(selected, "MMM d, yyyy") : placeholder}</span>
+            <CalendarIcon className="h-4 w-4 text-muted-foreground" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent
+          align="start"
+          className="w-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-0 shadow-xl"
+        >
+          <Calendar
+            mode="single"
+            selected={selected}
+            onSelect={(d) => {
+              if (d) {
+                onChange(format(d, "yyyy-MM-dd"));
+                setOpen(false);
+              }
+            }}
+            initialFocus
+            className={cn("p-3 pointer-events-auto")}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
 }
 
 function Field({
