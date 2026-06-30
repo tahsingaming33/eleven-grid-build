@@ -70,7 +70,7 @@ const shopProducts: ShopProduct[] = [
   },
   {
     title: "CursorFollow",
-    price: "AE Script",
+    price: "Free",
     description:
       "A custom After Effects script that speeds up your workflow.",
     thumbnail: cursorFollowThumb.url,
