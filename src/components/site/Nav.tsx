@@ -15,7 +15,7 @@ export function Nav() {
   const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
   return (
-    <header className="relative z-50 w-full border-b border-[var(--color-grid)] bg-[color-mix(in_oklab,var(--background)_82%,transparent)] backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-[var(--color-grid)] bg-[color-mix(in_oklab,var(--background)_82%,transparent)] backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 md:px-12">
         <Link to="/" className="font-mono text-[13px] font-semibold tracking-[0.18em]">
           MOTIONDUDE
