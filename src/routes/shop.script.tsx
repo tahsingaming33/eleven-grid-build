@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Grid";
+import beforeVideo from "@/assets/script/before.mp4.asset.json";
+import afterVideo from "@/assets/script/after.mp4.asset.json";
 
 export const Route = createFileRoute("/shop/script")({
   head: () => ({
@@ -58,22 +60,14 @@ function ScriptPage() {
           <p className="mt-2 text-base leading-relaxed text-muted-foreground">
             See the difference the script makes in a real timeline.
           </p>
-          {/*
-            TEMPORARY: Using Google Drive preview iframes for the Before/After videos.
-            Final version should swap each iframe for a native HTML5 video element:
-              <video autoPlay loop muted playsInline className="h-full w-full object-cover">
-                <source src="/path/to/before.mp4" type="video/mp4" />
-              </video>
-            (no `controls` attribute) once direct MP4 files are available.
-          */}
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             <BeforeAfterScreen
               label="Before"
-              src="https://drive.google.com/file/d/1801D-9yniILBaFRkvY7eZKWLjTmPiD_3/preview"
+              src={beforeVideo.url}
             />
             <BeforeAfterScreen
               label="After"
-              src="https://drive.google.com/file/d/1EQoOQX2bHAJyP5511nVB57Xlxngz7a2p/preview"
+              src={afterVideo.url}
             />
           </div>
         </section>
@@ -85,9 +79,8 @@ function ScriptPage() {
           <p className="mt-2 text-base leading-relaxed text-muted-foreground">
             A short walkthrough of the script in action.
           </p>
-          {/* TEMPORARY: Google Drive preview iframe. Swap for native <video controls> with direct MP4 when available. */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)]">
-            <div className="relative aspect-video w-full bg-[var(--color-surface)]">
+            <div className="relative aspect-video w-full bg-black">
               <iframe
                 src="https://drive.google.com/file/d/19fqSROvbCYX-9VNKrktQLPE5xVMf3AM9/preview"
                 allow="autoplay"
@@ -121,13 +114,15 @@ function ScriptPage() {
 function BeforeAfterScreen({ label, src }: { label: string; src: string }) {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)]">
-      <div className="relative aspect-video w-full bg-[var(--color-surface)]">
-        <iframe
+      <div className="relative w-full bg-black" style={{ aspectRatio: "1600 / 1080" }}>
+        <video
           src={src}
-          allow="autoplay"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full"
-          title={`${label} video`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-contain"
+          aria-label={`${label} video`}
         />
       </div>
       <span className="pointer-events-none absolute left-3 top-3 z-10 rounded-full border border-white/15 bg-black/60 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white/85 backdrop-blur-sm">
