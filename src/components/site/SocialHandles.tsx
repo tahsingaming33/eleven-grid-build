@@ -7,6 +7,7 @@ type Social = {
   label: string;
   href: string;
   Icon: typeof FaInstagram;
+  hoverClass: string;
 };
 
 const socials: Social[] = [
@@ -14,21 +15,25 @@ const socials: Social[] = [
     label: "Instagram",
     href: "https://www.instagram.com/motiondudehere/",
     Icon: FaInstagram,
+    hoverClass: "group-hover:text-[#E1306C]",
   },
   {
     label: "X",
     href: "https://x.com/motiondudegone",
     Icon: FaXTwitter,
+    hoverClass: "group-hover:text-[#FFFFFF]",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/tahsin-mahmud-bdt/",
     Icon: FaLinkedin,
+    hoverClass: "group-hover:text-[#0A66C2]",
   },
   {
     label: "WhatsApp",
     href: "https://wa.me/8801940295660",
     Icon: FaWhatsapp,
+    hoverClass: "group-hover:text-[#25D366]",
   },
 ];
 
