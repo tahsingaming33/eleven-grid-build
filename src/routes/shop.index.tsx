@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowUpRight, Play, Sparkles } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Grid";
+import cursorFollowThumb from "@/assets/shop/cursorfollow-thumb.png.asset.json";
 
 type Category = "project-files" | "scripts-plugins";
 
