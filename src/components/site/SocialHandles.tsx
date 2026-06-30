@@ -66,7 +66,7 @@ export function SocialHandles() {
             className="group relative flex aspect-[4/3] items-center justify-center md:aspect-square"
           >
             <s.Icon
-              className="h-7 w-7 text-foreground/70 transition-all duration-200 ease-out group-hover:scale-[1.12] group-hover:text-foreground"
+              className={`h-7 w-7 text-foreground/70 transition-all duration-[250ms] ease-out group-hover:scale-[1.12] ${s.hoverClass}`}
               aria-hidden="true"
             />
           </a>
