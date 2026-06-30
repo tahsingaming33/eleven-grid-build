@@ -1,57 +1,32 @@
+import { SiInstagram, SiX, SiLinkedin, SiWhatsapp } from "react-icons/si";
 import { Section, Eyebrow } from "./Grid";
 
 type Social = {
   label: string;
   href: string;
-  svg: React.ReactNode;
+  Icon: typeof SiInstagram;
 };
-
-const STROKE = 1.6;
 
 const socials: Social[] = [
   {
     label: "Instagram",
-    href: "#",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-      </svg>
-    ),
+    href: "https://www.instagram.com/motiondudehere/",
+    Icon: SiInstagram,
   },
   {
     label: "X",
-    href: "#",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M4 4l16 16" />
-        <path d="M20 4L4 20" />
-      </svg>
-    ),
+    href: "https://x.com/motiondudegone",
+    Icon: SiX,
   },
   {
     label: "LinkedIn",
-    href: "#",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="3" />
-        <path d="M8 10v7" />
-        <path d="M8 7v.01" />
-        <path d="M12 17v-4a2 2 0 0 1 4 0v4" />
-        <path d="M12 10v7" />
-      </svg>
-    ),
+    href: "https://www.linkedin.com/in/tahsin-mahmud-bdt/",
+    Icon: SiLinkedin,
   },
   {
     label: "WhatsApp",
-    href: "#",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M20.5 12a8.5 8.5 0 0 1-12.7 7.4L3.5 20.5l1.2-4.2A8.5 8.5 0 1 1 20.5 12z" />
-        <path d="M9 9.5c.2 1.2 1 2.4 1.9 3.3.9.9 2.1 1.6 3.3 1.9.4.1.8 0 1-.3l.7-.8c.2-.2.5-.2.7-.1l1.6.8c.3.1.4.4.3.7-.3.9-1.2 1.5-2.1 1.5-2 0-4-1-5.5-2.5S8.5 10.5 8.5 8.5c0-.9.6-1.8 1.5-2.1.3-.1.6 0 .7.3l.8 1.6c.1.2 0 .5-.1.7l-.8.7c-.3.2-.4.6-.3 1z" />
-      </svg>
-    ),
+    href: "https://wa.me/8801940295660",
+    Icon: SiWhatsapp,
   },
 ];
 
@@ -83,9 +58,10 @@ export function SocialHandles() {
             aria-label={s.label}
             className="group relative flex aspect-[4/3] items-center justify-center md:aspect-square"
           >
-            <span className="social-icon block h-7 w-7 text-foreground/80 group-hover:text-foreground">
-              {s.svg}
-            </span>
+            <s.Icon
+              className="h-7 w-7 text-foreground/70 transition-all duration-200 ease-out group-hover:scale-[1.12] group-hover:text-foreground"
+              aria-hidden="true"
+            />
           </a>
         ))}
       </div>
