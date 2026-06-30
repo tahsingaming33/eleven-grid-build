@@ -100,7 +100,9 @@ function ScriptPage() {
             Add it to your panel and start using it on your next project.
           </p>
           <a
-            href="#"
+            href="https://drive.google.com/file/d/1yiGZBa_vgkTdFRv45f6A8uUANVY6kVEG/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-8 inline-flex h-12 items-center rounded-full bg-foreground px-8 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
             Get Script
