@@ -1,4 +1,6 @@
 import { FaInstagram, FaXTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { Section, Eyebrow } from "./Grid";
 
 type Social = {
