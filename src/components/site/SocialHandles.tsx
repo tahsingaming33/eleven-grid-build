@@ -67,6 +67,23 @@ export function SocialHandles() {
           </a>
         ))}
       </div>
+      <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Link
+          to="/work"
+          className="inline-flex h-10 items-center rounded-full border border-[var(--color-border)] px-5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+        >
+          See Case Studies
+        </Link>
+        <Link
+          to="/inquiry"
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-[oklch(0.32_0.004_270)] px-5 text-[13px] font-medium text-white transition-opacity hover:opacity-90"
+        >
+          Inquiry
+          <span className="grid h-6 w-6 place-items-center rounded-full bg-white">
+            <ArrowRight className="h-3.5 w-3.5 text-[#0a0a0a]" />
+          </span>
+        </Link>
+      </div>
     </Section>
   );
 }
