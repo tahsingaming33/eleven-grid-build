@@ -11,7 +11,7 @@ export interface Project {
   cta: string;
   intro: string;
   strategy: { heading: string; body: string; tags: string[] };
-  storyboard: { caption: string }[];
+  storyboard: { caption: string; image?: string }[];
   credits: { name: string; role: string; href?: string }[];
   /** Vimeo numeric id. When present, an embedded player is rendered in the hero. */
   vimeoId?: string;
