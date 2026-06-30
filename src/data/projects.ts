@@ -56,7 +56,7 @@ export const projects: Project[] = [
     runtime: "35 Seconds",
     production: "7 Days",
     purpose: "Product Launch / Awareness",
-    cta: "tahsin@motiondude.online",
+    cta: "tahasinmahmud12@gmail.com",
     vimeoId: "1158834812",
     thumbnail:
       "https://i.vimeocdn.com/video/2113002199-81a27d78824318513c72347c6944e814a83d8a367b8c6cf1e0c871e9d042cc8d-d_1280x720?region=us",
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     runtime: "60 Seconds",
     production: "5 Days",
     purpose: "Self-Initiated / Concept",
-    cta: "tahsin@motiondude.online",
+    cta: "tahasinmahmud12@gmail.com",
     vimeoId: "1197933363",
     thumbnail: "/__l5e/assets-v1/949bd922-a0c2-4a95-952e-dd17885fee76/lovable-thumb.png",
     intro:
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     runtime: "Ongoing",
     production: "In-house",
     purpose: "Audience Growth",
-    cta: "tahsin@motiondude.online",
+    cta: "tahasinmahmud12@gmail.com",
     thumbnail: "/__l5e/assets-v1/389c849e-ad2c-4767-bf8b-85e24baf4610/elite-crypto-thumb.png",
     intro:
       "A recurring motion series built to make complex crypto concepts feel calm and approachable.",
