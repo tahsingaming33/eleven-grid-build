@@ -154,7 +154,7 @@ function InquiryPage() {
             <CheckCircle2 className="mx-auto h-10 w-10 text-foreground/80" />
             <h2 className="mt-5 text-2xl font-medium tracking-[-0.01em]">Thanks, your inquiry has been sent.</h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-              I will get back to you within 3 work days.
+              I will get back to you within 24 hours.
             </p>
           </div>
         ) : (
