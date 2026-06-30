@@ -144,7 +144,7 @@ function InquiryPage() {
           <span className="text-foreground/35">project.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-          Share your vision below. I'll get back to you within 2 business days.
+          Share your vision below. I'll get back to you within 24 hours.
         </p>
       </div>
 
@@ -154,7 +154,7 @@ function InquiryPage() {
             <CheckCircle2 className="mx-auto h-10 w-10 text-foreground/80" />
             <h2 className="mt-5 text-2xl font-medium tracking-[-0.01em]">Thanks, your inquiry has been sent.</h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-              I will get back to you within 3 work days.
+              I will get back to you within 24 hours.
             </p>
           </div>
         ) : (
