@@ -1,7 +1,8 @@
+import { useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import { projects } from "@/data/projects";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { InteractiveCard } from "@/components/site/InteractiveCard";
 import { NoiseGradient, type NoisePreset } from "@/components/site/NoiseGradient";
 import { HoverPreviewThumb } from "@/components/site/HoverPreviewThumb";
