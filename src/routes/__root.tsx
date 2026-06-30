@@ -9,7 +9,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -134,22 +134,50 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const location = useRouterState({ select: (s) => s.location });
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Crossfade between pages with a full-bleed overlay so we never show two
+  // different route contents at once. On every pathname change we cover the
+  // viewport (0.25s), scroll to top, then uncover (0.25s) — totalling 0.5s.
+  const [covering, setCovering] = useState(false);
+  const isFirst = useRef(true);
+
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
+    setCovering(true);
+    const t = window.setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0 });
+      setCovering(false);
+    }, 250);
+    return () => window.clearTimeout(t);
+  }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SiteShell>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              <Outlet />
-            </motion.div>
+          <Outlet />
+          <AnimatePresence>
+            {covering && (
+              <motion.div
+                key="page-transition-veil"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                aria-hidden
+                style={{
+                  position: "fixed",
+                  inset: 0,
+                  zIndex: 9999,
+                  pointerEvents: "none",
+                  background: "var(--background, #0C0C0D)",
+                }}
+              />
+            )}
           </AnimatePresence>
         </SiteShell>
       </ThemeProvider>
