@@ -18,7 +18,7 @@ export const Route = createFileRoute("/inquiry")({
   head: () => ({
     meta: [
       { title: "Inquiry · Motiondude" },
-      { name: "description", content: "Start your project. Share your vision and I'll get back within 2 business days." },
+      { name: "description", content: "Start your project. Share your vision and I'll get back within 24 hours." },
       { property: "og:title", content: "Inquiry · Motiondude" },
       { property: "og:description", content: "Start your project with Motiondude." },
     ],
