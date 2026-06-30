@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Section } from "@/components/site/Grid";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CalendarIcon, CheckCircle2 } from "lucide-react";
+import { format } from "date-fns";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/inquiry")({
   head: () => ({
@@ -161,13 +165,12 @@ function InquiryPage() {
                 placeholder="Select budget range"
                 options={investmentOptions}
               />
-              <Field
+              <DateField
                 label="Desired Deadline"
                 required
                 value={data.deadline}
                 onChange={(v) => set("deadline", v)}
                 placeholder="Select preferred date"
-                type="date"
               />
               <div className="md:col-span-2">
                 <FieldLabel>Please provide more details about your animation project *</FieldLabel>
