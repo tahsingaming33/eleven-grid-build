@@ -160,14 +160,24 @@ function CaseStudy() {
                 onClick={() => setLightbox(i)}
                 className="group relative aspect-video overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-left"
               >
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-60 transition-opacity group-hover:opacity-90"
-                  style={{
-                    background: `radial-gradient(ellipse at ${20 + (i * 13) % 60}% ${30 + (i * 7) % 40}%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 65%)`,
-                  }}
-                />
-                <div className="absolute bottom-3 left-3 right-3 text-[11px] font-mono tracking-[0.16em] uppercase text-muted-foreground">
+                {f.image ? (
+                  <img
+                    src={f.image}
+                    alt={f.caption}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-60 transition-opacity group-hover:opacity-90"
+                    style={{
+                      background: `radial-gradient(ellipse at ${20 + (i * 13) % 60}% ${30 + (i * 7) % 40}%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 65%)`,
+                    }}
+                  />
+                )}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute bottom-3 left-3 right-3 text-[11px] font-mono tracking-[0.16em] uppercase text-white/0 group-hover:text-white/90 transition-colors">
                   {String(i + 1).padStart(2, "0")} · {f.caption}
                 </div>
               </button>
@@ -310,12 +320,20 @@ function CaseStudy() {
             <ChevronRight className="h-5 w-5" />
           </button>
           <div className="w-full max-w-5xl">
-            <div
-              className="aspect-video w-full rounded-xl border border-white/10"
-              style={{
-                background: `radial-gradient(ellipse at 40% 30%, color-mix(in oklab, var(--accent) 18%, transparent), #0a0a0a 70%)`,
-              }}
-            />
+            {project.storyboard[lightbox].image ? (
+              <img
+                src={project.storyboard[lightbox].image}
+                alt={project.storyboard[lightbox].caption}
+                className="aspect-video w-full rounded-xl border border-white/10 object-cover"
+              />
+            ) : (
+              <div
+                className="aspect-video w-full rounded-xl border border-white/10"
+                style={{
+                  background: `radial-gradient(ellipse at 40% 30%, color-mix(in oklab, var(--accent) 18%, transparent), #0a0a0a 70%)`,
+                }}
+              />
+            )}
             <div className="mt-4 text-center text-[12px] font-mono tracking-[0.18em] uppercase text-white/70">
               {String(lightbox + 1).padStart(2, "0")} / {String(project.storyboard.length).padStart(2, "0")} · {project.storyboard[lightbox].caption}
             </div>

@@ -1,3 +1,14 @@
+import maagnus01 from "@/assets/maagnus/01.png.asset.json";
+import maagnus02 from "@/assets/maagnus/02.png.asset.json";
+import maagnus03 from "@/assets/maagnus/03.png.asset.json";
+import maagnus04 from "@/assets/maagnus/04.png.asset.json";
+import maagnus05 from "@/assets/maagnus/05.png.asset.json";
+import maagnus06 from "@/assets/maagnus/06.png.asset.json";
+import maagnus07 from "@/assets/maagnus/07.png.asset.json";
+import maagnus08 from "@/assets/maagnus/08.png.asset.json";
+import maagnus09 from "@/assets/maagnus/09.png.asset.json";
+import maagnus10 from "@/assets/maagnus/10.png.asset.json";
+
 export interface Project {
   slug: string;
   title: string;
@@ -11,7 +22,7 @@ export interface Project {
   cta: string;
   intro: string;
   strategy: { heading: string; body: string; tags: string[] };
-  storyboard: { caption: string }[];
+  storyboard: { caption: string; image?: string }[];
   credits: { name: string; role: string; href?: string }[];
   /** Vimeo numeric id. When present, an embedded player is rendered in the hero. */
   vimeoId?: string;
@@ -57,16 +68,16 @@ export const projects: Project[] = [
       tags: ["Lead with the problem", "Simplicity over features", "Data made human"],
     },
     storyboard: [
-      { caption: "Frame 01" },
-      { caption: "Frame 02" },
-      { caption: "Frame 03" },
-      { caption: "Frame 04" },
-      { caption: "Frame 05" },
-      { caption: "Frame 06" },
-      { caption: "Frame 07" },
-      { caption: "Frame 08" },
-      { caption: "Frame 09" },
-      { caption: "Frame 10" },
+      { caption: "Logo Reveal", image: maagnus01.url },
+      { caption: "Installed", image: maagnus02.url },
+      { caption: "Discount Flow", image: maagnus03.url },
+      { caption: "Storefront Popup", image: maagnus04.url },
+      { caption: "Dashboard", image: maagnus05.url },
+      { caption: "Over 20 Data Points", image: maagnus06.url },
+      { caption: "Featured on Uneed", image: maagnus07.url },
+      { caption: "Install Now", image: maagnus08.url },
+      { caption: "You Could Finally See", image: maagnus09.url },
+      { caption: "Cart Conversion", image: maagnus10.url },
     ],
     process: [
       {
