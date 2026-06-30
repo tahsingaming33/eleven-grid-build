@@ -6,9 +6,9 @@ import { SocialHandles } from "./SocialHandles";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground" style={{ backgroundColor: "var(--background)" }}>
       <Nav />
-      <main className="relative pt-16">
+      <main className="relative bg-background pt-16" style={{ backgroundColor: "var(--background)" }}>
         <GridFrame>
           {children}
           <SocialHandles />

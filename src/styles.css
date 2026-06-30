@@ -152,6 +152,18 @@
     border-color: var(--color-border);
   }
 
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    margin: 0;
+    background-color: var(--color-background);
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
