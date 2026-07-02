@@ -16,6 +16,7 @@ interface ShopProduct {
   internal?: boolean;
   category: Category;
   bestSeller?: boolean;
+  isNew?: boolean;
   tutorialUrl?: string;
 }
 
@@ -28,6 +29,7 @@ const shopProducts: ShopProduct[] = [
     thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
     url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
     category: "project-files",
+    isNew: true,
   },
   {
     title: "Zelios SaaS Breakdown Video",
@@ -166,9 +168,32 @@ function ShopPage() {
                 "group relative flex flex-col overflow-hidden rounded-2xl border bg-[var(--color-card)] " +
                 (p.bestSeller
                   ? "border-amber-300/60 shadow-[0_0_0_1px_rgba(251,191,36,0.25),0_20px_60px_-20px_rgba(251,191,36,0.45)]"
-                  : "border-[var(--color-border)]")
+                  : p.isNew
+                    ? "border-blue-400/60 shadow-[0_0_0_1px_rgba(96,165,250,0.25),0_20px_60px_-20px_rgba(96,165,250,0.45)]"
+                    : "border-[var(--color-border)]")
               }
             >
+              {p.isNew && (
+                <>
+                  <div
+                    className="pointer-events-none absolute inset-0 rounded-2xl"
+                    style={{
+                      background:
+                        "radial-gradient(120% 80% at 50% 0%, rgba(96,165,250,0.18) 0%, rgba(96,165,250,0) 55%)",
+                    }}
+                  />
+                  <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
+                    <span className="sparkle sparkle-a" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
+                    <span className="sparkle sparkle-b" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
+                    <span className="sparkle sparkle-c" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
+                    <span className="sparkle sparkle-d" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
+                  </div>
+                  <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-blue-400/60 bg-black/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur">
+                    <Sparkles className="h-3 w-3" />
+                    New
+                  </div>
+                </>
+              )}
               {p.bestSeller && (
                 <>
                   <div
@@ -245,7 +270,9 @@ function ShopPage() {
                           "inline-flex h-9 items-center gap-1 rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                            : "bg-foreground text-background")
+                            : p.isNew
+                              ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
+                              : "bg-foreground text-background")
                         }
                       >
                         View script
@@ -260,7 +287,9 @@ function ShopPage() {
                           "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                            : "bg-foreground text-background")
+                            : p.isNew
+                              ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
+                              : "bg-foreground text-background")
                         }
                       >
                         Get it
