@@ -160,7 +160,7 @@ function ShopPage() {
             </p>
           </div>
         ) : (
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visibleProducts.map((p) => (
             <div
               key={p.title}
@@ -188,8 +188,8 @@ function ShopPage() {
                     <span className="sparkle sparkle-c" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
                     <span className="sparkle sparkle-d" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
                   </div>
-                  <div className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-blue-400/60 bg-black/50 px-2 py-0.5 text-[9px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur sm:left-4 sm:top-4 sm:gap-1.5 sm:px-2.5 sm:py-1 sm:text-[10px]">
-                    <Sparkles className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+                  <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-blue-400/60 bg-black/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur">
+                    <Sparkles className="h-3 w-3" />
                     New
                   </div>
                 </>
@@ -209,8 +209,8 @@ function ShopPage() {
                     <span className="sparkle sparkle-c">✦</span>
                     <span className="sparkle sparkle-d">✦</span>
                   </div>
-                  <div className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-amber-300/60 bg-black/50 px-2 py-0.5 text-[9px] font-medium uppercase tracking-[0.14em] text-amber-200 backdrop-blur sm:left-4 sm:top-4 sm:gap-1.5 sm:px-2.5 sm:py-1 sm:text-[10px]">
-                    <Sparkles className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+                  <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-amber-300/60 bg-black/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-amber-200 backdrop-blur">
+                    <Sparkles className="h-3 w-3" />
                     Best Seller
                   </div>
                 </>
@@ -240,15 +240,15 @@ function ShopPage() {
                   </div>
                 )}
               </div>
-              <div className="relative flex flex-1 flex-col p-3 sm:p-6">
-                <h3 className="text-sm font-medium tracking-[-0.01em] md:text-lg">
+              <div className="relative flex flex-1 flex-col p-6">
+                <h3 className="text-lg font-medium tracking-[-0.01em]">
                   {p.title}
                 </h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground md:mt-2 md:text-sm">
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
-                  <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3 md:gap-4 md:pt-6">
-                    <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-[10px] font-medium md:px-3 md:py-1 md:text-xs">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-6">
+                  <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-medium">
                     {p.price}
                   </span>
                   <div className="flex flex-col gap-2 sm:flex-row">
@@ -257,9 +257,9 @@ function ShopPage() {
                         href={p.tutorialUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-8 items-center gap-1 rounded-full border border-[var(--color-border)] px-2.5 text-xs font-medium text-foreground transition-colors hover:bg-[var(--color-surface)] md:h-9 md:gap-1.5 md:px-4 md:text-sm"
+                        className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-[var(--color-surface)]"
                       >
-                        <Play className="h-2.5 w-2.5 fill-current md:h-3 md:w-3" />
+                        <Play className="h-3 w-3 fill-current" />
                         Watch Tutorial
                       </a>
                     )}
@@ -267,7 +267,7 @@ function ShopPage() {
                       <Link
                         to={p.url}
                         className={
-                          "inline-flex h-8 items-center gap-1 rounded-full px-3 text-xs font-medium transition-opacity hover:opacity-90 md:h-9 md:px-5 md:text-sm " +
+                          "inline-flex h-9 items-center gap-1 rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
                             : p.isNew
@@ -276,7 +276,7 @@ function ShopPage() {
                         }
                       >
                         View script
-                        <ArrowUpRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                        <ArrowUpRight className="h-4 w-4" />
                       </Link>
                     ) : (
                       <a
@@ -284,7 +284,7 @@ function ShopPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={
-                          "inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-opacity hover:opacity-90 md:h-9 md:px-5 md:text-sm " +
+                          "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
                             : p.isNew
