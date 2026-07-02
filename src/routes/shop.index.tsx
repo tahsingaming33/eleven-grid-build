@@ -241,7 +241,7 @@ function ShopPage() {
                 )}
               </div>
               <div className="relative flex flex-1 flex-col p-3 sm:p-6">
-                <h3 className="text-sm font-medium tracking-[-0.01em] sm:text-base md:text-lg">
+                <h3 className="text-sm font-medium tracking-[-0.01em] md:text-lg">
                   {p.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
