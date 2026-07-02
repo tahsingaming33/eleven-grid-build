@@ -16,6 +16,7 @@ interface ShopProduct {
   internal?: boolean;
   category: Category;
   bestSeller?: boolean;
+  isNew?: boolean;
   tutorialUrl?: string;
 }
 
@@ -28,6 +29,7 @@ const shopProducts: ShopProduct[] = [
     thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
     url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
     category: "project-files",
+    isNew: true,
   },
   {
     title: "Zelios SaaS Breakdown Video",
