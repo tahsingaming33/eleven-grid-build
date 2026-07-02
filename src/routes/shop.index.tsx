@@ -284,7 +284,7 @@ function ShopPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={
-                          "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
+                          "inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-opacity hover:opacity-90 md:h-9 md:px-5 md:text-sm " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
                             : p.isNew
