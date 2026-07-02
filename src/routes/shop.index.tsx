@@ -240,7 +240,7 @@ function ShopPage() {
                   </div>
                 )}
               </div>
-              <div className="relative flex flex-1 flex-col p-6">
+              <div className="relative flex flex-1 flex-col p-3 sm:p-6">
                 <h3 className="text-lg font-medium tracking-[-0.01em]">
                   {p.title}
                 </h3>
