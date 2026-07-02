@@ -247,8 +247,8 @@ function ShopPage() {
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground md:mt-2 md:text-sm">
                   {p.description}
                 </p>
-                <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-6">
-                  <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-medium">
+                  <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3 md:gap-4 md:pt-6">
+                    <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-[10px] font-medium md:px-3 md:py-1 md:text-xs">
                     {p.price}
                   </span>
                   <div className="flex flex-col gap-2 sm:flex-row">
