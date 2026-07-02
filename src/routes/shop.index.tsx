@@ -188,8 +188,8 @@ function ShopPage() {
                     <span className="sparkle sparkle-c" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
                     <span className="sparkle sparkle-d" style={{ color: '#60a5fa', textShadow: '0 0 8px rgba(96,165,250,0.9), 0 0 16px rgba(96,165,250,0.5)' }}>✦</span>
                   </div>
-                  <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-blue-400/60 bg-black/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur">
-                    <Sparkles className="h-3 w-3" />
+                  <div className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-blue-400/60 bg-black/50 px-2 py-0.5 text-[9px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur sm:left-4 sm:top-4 sm:gap-1.5 sm:px-2.5 sm:py-1 sm:text-[10px]">
+                    <Sparkles className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                     New
                   </div>
                 </>
