@@ -259,7 +259,7 @@ function ShopPage() {
                         rel="noopener noreferrer"
                         className="inline-flex h-8 items-center gap-1 rounded-full border border-[var(--color-border)] px-2.5 text-xs font-medium text-foreground transition-colors hover:bg-[var(--color-surface)] md:h-9 md:gap-1.5 md:px-4 md:text-sm"
                       >
-                        <Play className="h-3 w-3 fill-current" />
+                        <Play className="h-2.5 w-2.5 fill-current md:h-3 md:w-3" />
                         Watch Tutorial
                       </a>
                     )}
