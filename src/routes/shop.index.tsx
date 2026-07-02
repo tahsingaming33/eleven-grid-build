@@ -257,7 +257,7 @@ function ShopPage() {
                         href={p.tutorialUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-[var(--color-surface)]"
+                        className="inline-flex h-8 items-center gap-1 rounded-full border border-[var(--color-border)] px-2.5 text-xs font-medium text-foreground transition-colors hover:bg-[var(--color-surface)] md:h-9 md:gap-1.5 md:px-4 md:text-sm"
                       >
                         <Play className="h-3 w-3 fill-current" />
                         Watch Tutorial
