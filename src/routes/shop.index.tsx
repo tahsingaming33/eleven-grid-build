@@ -244,7 +244,7 @@ function ShopPage() {
                 <h3 className="text-sm font-medium tracking-[-0.01em] md:text-lg">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground md:mt-2 md:text-sm">
                   {p.description}
                 </p>
                 <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-6">
