@@ -31,6 +31,15 @@ const shopProducts: ShopProduct[] = [
     tutorialUrl: "https://www.youtube.com/watch?v=k0lqThij2Lg&t=6s",
   },
   {
+    title: "Design Move: Soul Project File",
+    price: "$0+",
+    description:
+      "The complete After Effects project file for Design Move: Soul. Cleanly organized compositions, all assets included, and support for AE 2023, 2024 and 2025. Perfect for studying layout, typography and animation.",
+    thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
+    url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
+    category: "project-files",
+  },
+  {
     title: "Teejayartz Breakdown Pack",
     price: "Free",
     description:
