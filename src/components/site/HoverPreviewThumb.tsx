@@ -48,9 +48,10 @@ type Props = {
   vimeoId: string;
   thumbnail?: string;
   alt: string;
+  className?: string;
 };
 
-export function HoverPreviewThumb({ vimeoId, thumbnail, alt }: Props) {
+export function HoverPreviewThumb({ vimeoId, thumbnail, alt, className }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const playerRef = useRef<VimeoPlayerLike | null>(null);
