@@ -353,22 +353,11 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
-  const top = reels.slice(0, 3);
-  const bottom = reels.slice(3, 5);
   return (
-    <div className="space-y-10">
-      <div className="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6">
-        {top.map((r) => (
-          <ReelCard key={r.number} reel={r} />
-        ))}
-      </div>
-      {bottom.length > 0 && (
-        <div className="mx-auto grid grid-cols-2 gap-5 md:max-w-[66%] md:gap-6">
-          {bottom.map((r) => (
-            <ReelCard key={r.number} reel={r} />
-          ))}
-        </div>
-      )}
+    <div className="grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2">
+      {reels.map((r) => (
+        <ReelCard key={r.number} reel={r} />
+      ))}
     </div>
   );
 }
@@ -376,50 +365,41 @@ function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
 function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
   const href = `https://www.youtube.com/results?search_query=${encodeURIComponent(reel.searchQuery)}`;
   return (
-    <div className="space-y-3">
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative block aspect-[9/16] overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block bg-[var(--color-card)] p-6"
+    >
+      <div
+        className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]"
       >
-        {/* Backdrop */}
         <div
           aria-hidden
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--accent) 18%, transparent), #0a0a0a 70%)",
+              "radial-gradient(ellipse at 50% 40%, color-mix(in oklab, var(--accent) 22%, transparent), #0a0a0a 70%)",
           }}
         />
-        {/* YouTube-style header */}
-        <div className="absolute left-0 right-0 top-0 flex items-center gap-2 p-3">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#1f6feb] text-[10px] font-bold text-white">
-            MD
+        <div className="absolute inset-0 grid place-items-center px-6 text-center">
+          <span className="text-lg font-medium tracking-[-0.01em] text-white/90 md:text-xl">
+            {reel.keyword}
           </span>
-          <div className="min-w-0 leading-tight">
-            <div className="truncate text-[13px] font-semibold text-white">{reel.videoTitle}</div>
-            <div className="truncate text-[11px] text-white/70">{reel.channel}</div>
-          </div>
         </div>
-        {/* Keyword text overlay */}
-        <div className="absolute inset-x-3 top-16 text-center text-[15px] font-medium text-white/90">
-          {reel.keyword}
-        </div>
-        {/* Play button (YouTube Shorts style) */}
-        <div className="absolute inset-0 grid place-items-center">
-          <div className="relative grid h-16 w-12 place-items-center rounded-xl bg-[#ff0033] shadow-[0_10px_30px_-10px_rgba(255,0,51,0.6)] transition-transform group-hover:scale-105">
-            <Play className="h-6 w-6 fill-white text-white" />
-          </div>
-        </div>
-        {/* External hint */}
-        <div className="absolute right-3 bottom-3 grid h-7 w-7 place-items-center rounded-full border border-white/15 bg-black/40 text-white/80 backdrop-blur-sm transition-colors group-hover:text-white">
-          <ArrowUpRight className="h-3.5 w-3.5" />
-        </div>
-      </a>
-      <div className="text-center text-[11px] font-mono uppercase tracking-[0.22em] text-muted-foreground">
-        Reel {reel.number}
       </div>
-    </div>
+      <div className="mt-5 flex items-start justify-between gap-6">
+        <div className="min-w-0">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <span className="font-mono tracking-[0.18em] uppercase">Reel {String(reel.number).padStart(2, "0")}</span>
+            <span>·</span>
+            <span>2026</span>
+          </div>
+          <h3 className="mt-2 text-xl font-medium tracking-[-0.01em]">{reel.videoTitle}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{reel.keyword}</p>
+        </div>
+        <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+      </div>
+    </a>
   );
 }
