@@ -48,7 +48,7 @@ function WorkPage() {
                       </span>
                     </div>
                   ) : p.vimeoId ? (
-                    <HoverPreviewThumb vimeoId={p.vimeoId} thumbnail={p.thumbnail} alt={p.title} />
+                    <HoverPreviewThumb vimeoId={p.vimeoId} thumbnail={p.thumbnail} alt={p.title} className={p.slug === "codex" ? "scale-[1.3]" : undefined} />
                   ) : p.thumbnail ? (
                     <img
                       src={p.thumbnail}
