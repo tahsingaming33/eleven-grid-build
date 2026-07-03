@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/site/Grid";
-import { Film, Sparkles, Layers, Play } from "lucide-react";
+import { Film, Sparkles, Layers } from "lucide-react";
 import { InteractiveCard } from "@/components/site/InteractiveCard";
 import { NoiseGradient } from "@/components/site/NoiseGradient";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import quakesLogo from "@/assets/logos/quakes.png.asset.json";
 import masahaLogo from "@/assets/logos/masaha.png.asset.json";
 import elitesLogo from "@/assets/logos/elites.png.asset.json";
@@ -225,7 +225,6 @@ function FAQ() {
 }
 
 function FAQRow({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
-  const ref = useRef<HTMLDivElement>(null);
   return (
     <div className="group">
       <button
@@ -243,14 +242,13 @@ function FAQRow({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: bool
         </span>
       </button>
       <div
-        style={{ height: isOpen ? (ref.current?.scrollHeight ?? 0) : 0 }}
-        className="overflow-hidden transition-[height] duration-[350ms] ease-out"
+        className="grid overflow-hidden transition-[grid-template-rows] duration-[350ms] ease-out"
+        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >
-        <div
-          ref={ref}
-          className={`pb-6 pr-10 transition-opacity duration-300 ease-out ${isOpen ? "opacity-100" : "opacity-0"}`}
-        >
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{a}</p>
+        <div className="min-h-0 overflow-hidden">
+          <div className={`pb-6 pr-10 transition-opacity duration-300 ease-out ${isOpen ? "opacity-100" : "opacity-0"}`}>
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{a}</p>
+          </div>
         </div>
       </div>
     </div>
