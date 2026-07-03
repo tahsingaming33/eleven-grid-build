@@ -1,3 +1,4 @@
+import codexThumb from "@/assets/projects/codex-thumb.png.asset.json";
 import maagnus01 from "@/assets/maagnus/01.png.asset.json";
 import maagnus02 from "@/assets/maagnus/02.png.asset.json";
 import maagnus03 from "@/assets/maagnus/03.png.asset.json";
