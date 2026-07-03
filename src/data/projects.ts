@@ -44,6 +44,8 @@ export interface Project {
     searchQuery?: string;
     /** Direct video URL to play inline (mp4). */
     videoUrl?: string;
+    /** Google Drive file id — renders as a Drive preview iframe. */
+    driveId?: string;
   }[];
 }
 
