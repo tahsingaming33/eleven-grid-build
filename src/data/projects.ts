@@ -1,4 +1,11 @@
-// Codex thumbnail is a committed file in /public so it resolves on any host.
+import codexThumb from "@/assets/projects/codex-thumb.png.asset.json";
+import eliteReel1 from "@/assets/reels/elite-crypto/reel1.mp4.asset.json";
+import eliteReel2 from "@/assets/reels/elite-crypto/reel2.mp4.asset.json";
+import eliteReel3 from "@/assets/reels/elite-crypto/reel3.mp4.asset.json";
+import eliteReel4 from "@/assets/reels/elite-crypto/reel4.mp4.asset.json";
+import eliteReel5 from "@/assets/reels/elite-crypto/reel5.mp4.asset.json";
+import eliteReel6 from "@/assets/reels/elite-crypto/reel6.mp4.asset.json";
+import eliteReel7 from "@/assets/reels/elite-crypto/reel7.mp4.asset.json";
 import maagnus01 from "@/assets/maagnus/01.png.asset.json";
 import maagnus02 from "@/assets/maagnus/02.png.asset.json";
 import maagnus03 from "@/assets/maagnus/03.png.asset.json";
@@ -44,8 +51,6 @@ export interface Project {
     searchQuery?: string;
     /** Direct video URL to play inline (mp4). */
     videoUrl?: string;
-    /** Google Drive file id — renders as a Drive preview iframe. */
-    driveId?: string;
   }[];
 }
 
@@ -164,7 +169,7 @@ export const projects: Project[] = [
     purpose: "Self-Initiated / Concept",
     cta: "tahasinmahmud12@gmail.com",
     vimeoId: "1206653266",
-    thumbnail: "/images/codex-thumb.png",
+    thumbnail: codexThumb.url,
     intro:
       "This was never a client or sponsored project. It's a personal experiment exploring how Codex can generate SVG code, built purely out of curiosity. The 15 second video is a simple animated demonstration of the idea, made independently with no affiliation to Codex.",
     strategy: {
@@ -200,13 +205,28 @@ export const projects: Project[] = [
     },
     storyboard: [],
     reels: [
-      { number: "01", driveId: "1GL9G8XQIn_QWnhbnBuG9KlIWxjs8eHEh" },
-      { number: "02", driveId: "1-WjEOsIUw6rfMCasTAjpn17faEFCOh1F" },
-      { number: "03", driveId: "1exr-WmV6Z9bcQE_B1FBOz6HqQ-FiVCjm" },
-      { number: "04", driveId: "1vHfD51B6BI2btoIiia_0BK8qQWLgcPKq" },
-      { number: "05", driveId: "1tkaeIfTlTjIQ_gnsB3ILghVhRJ0tHOL-" },
-      { number: "06", driveId: "1ufvdxB8u0ntTEf7orHrjfAL6z6Hz_MYv" },
-      { number: "07", driveId: "12kzLHnyFYztNH68hQMk5JTAs74VxAPWf" },
+      {
+        number: "01",
+        videoUrl: eliteReel1.url,
+      },
+      {
+        number: "02",
+        videoUrl: eliteReel2.url,
+      },
+      {
+        number: "03",
+        videoUrl: eliteReel3.url,
+      },
+      {
+        number: "04",
+        videoUrl: eliteReel4.url,
+      },
+      {
+        number: "05",
+        videoUrl: eliteReel5.url,
+      },
+      { number: "06", videoUrl: eliteReel6.url },
+      { number: "07", videoUrl: eliteReel7.url },
     ],
     credits: [
       { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
