@@ -363,24 +363,30 @@ function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
 }
 
 function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
-  const href = `https://www.youtube.com/results?search_query=${encodeURIComponent(reel.searchQuery)}`;
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block bg-[var(--color-card)] p-6"
-    >
+    <div className="group block bg-[var(--color-card)] p-6">
       <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 40%, color-mix(in oklab, var(--accent) 22%, transparent), #0a0a0a 70%)",
-          }}
-        />
+        {reel.videoUrl ? (
+          <video
+            src={reel.videoUrl}
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+        ) : (
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 40%, color-mix(in oklab, var(--accent) 22%, transparent), #0a0a0a 70%)",
+            }}
+          />
+        )}
       </div>
-    </a>
+    </div>
   );
 }

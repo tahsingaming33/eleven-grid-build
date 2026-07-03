@@ -1,4 +1,11 @@
 import codexThumb from "@/assets/projects/codex-thumb.png.asset.json";
+import eliteReel1 from "@/assets/reels/elite-crypto/reel1.mp4.asset.json";
+import eliteReel2 from "@/assets/reels/elite-crypto/reel2.mp4.asset.json";
+import eliteReel3 from "@/assets/reels/elite-crypto/reel3.mp4.asset.json";
+import eliteReel4 from "@/assets/reels/elite-crypto/reel4.mp4.asset.json";
+import eliteReel5 from "@/assets/reels/elite-crypto/reel5.mp4.asset.json";
+import eliteReel6 from "@/assets/reels/elite-crypto/reel6.mp4.asset.json";
+import eliteReel7 from "@/assets/reels/elite-crypto/reel7.mp4.asset.json";
 import maagnus01 from "@/assets/maagnus/01.png.asset.json";
 import maagnus02 from "@/assets/maagnus/02.png.asset.json";
 import maagnus03 from "@/assets/maagnus/03.png.asset.json";
@@ -38,10 +45,12 @@ export interface Project {
   /** Optional YouTube reels grid (rendered in place of the hero video). */
   reels?: {
     number: string;
-    videoTitle: string;
-    channel: string;
-    keyword: string;
-    searchQuery: string;
+    videoTitle?: string;
+    channel?: string;
+    keyword?: string;
+    searchQuery?: string;
+    /** Direct video URL to play inline (mp4). */
+    videoUrl?: string;
   }[];
 }
 
@@ -198,39 +207,26 @@ export const projects: Project[] = [
     reels: [
       {
         number: "01",
-        videoTitle: "Elite Crypto Video 16",
-        channel: "Motion Dude",
-        keyword: "wiring.",
-        searchQuery: "Elite Crypto Video 16 Motion Dude",
+        videoUrl: eliteReel1.url,
       },
       {
         number: "02",
-        videoTitle: "Elite Crypto Video 15",
-        channel: "Motion Dude",
-        keyword: "refineries",
-        searchQuery: "Elite Crypto Video 15 Motion Dude",
+        videoUrl: eliteReel2.url,
       },
       {
         number: "03",
-        videoTitle: "Elite Crypto Video 13",
-        channel: "Motion Dude",
-        keyword: "Buy gold for 17 months straight to record highs.",
-        searchQuery: "Elite Crypto Video 13 Motion Dude",
+        videoUrl: eliteReel3.url,
       },
       {
         number: "04",
-        videoTitle: "Elite Crypto Video 9",
-        channel: "Motion Dude",
-        keyword: "havens.",
-        searchQuery: "Elite Crypto Video 9 Motion Dude",
+        videoUrl: eliteReel4.url,
       },
       {
         number: "05",
-        videoTitle: "Elite Crypto Video 17",
-        channel: "Motion Dude",
-        keyword: "Cook on Beijing",
-        searchQuery: "Elite Crypto Video 17 Motion Dude",
+        videoUrl: eliteReel5.url,
       },
+      { number: "06", videoUrl: eliteReel6.url },
+      { number: "07", videoUrl: eliteReel7.url },
     ],
     credits: [
       { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
