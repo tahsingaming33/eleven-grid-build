@@ -126,7 +126,7 @@ export function HoverPreviewThumb({ vimeoId, thumbnail, alt, className }: Props)
           src={thumbnail}
           alt={alt}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover ${className ?? ""}`.trim()}
         />
       )}
       {mounted && (
