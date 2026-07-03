@@ -363,27 +363,24 @@ function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
 }
 
 function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
-  const ref = useRef<HTMLVideoElement | null>(null);
-  const onPlay = () => {
-    const current = ref.current;
-    if (!current) return;
-    document.querySelectorAll<HTMLVideoElement>("video[data-reel]").forEach((v) => {
-      if (v !== current) v.pause();
-    });
-  };
   return (
     <div className="group block bg-[var(--color-card)] p-6">
       <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-        {reel.videoUrl ? (
+        {reel.driveId ? (
+          <iframe
+            src={`https://drive.google.com/file/d/${reel.driveId}/preview`}
+            className="absolute inset-0 h-full w-full"
+            allow="autoplay"
+            allowFullScreen
+            title={`Reel ${reel.number}`}
+          />
+        ) : reel.videoUrl ? (
           <video
-            ref={ref}
-            data-reel
             src={reel.videoUrl}
             className="absolute inset-0 h-full w-full object-cover"
             playsInline
             controls
             preload="metadata"
-            onPlay={onPlay}
           />
         ) : (
           <div
