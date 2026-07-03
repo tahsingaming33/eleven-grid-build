@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import { getProject, projects } from "@/data/projects";
-import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Instagram, Play, X } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
@@ -118,6 +118,30 @@ function CaseStudy() {
           ))}
         </div>
       </Section>
+
+      {project.slug === "elite-crypto-creator-series" && (
+        <Section size="sm">
+          <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 md:p-8">
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <div>
+                <h3 className="text-sm font-medium">Want to see more?</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Watch the full reel series on the client's Instagram.
+                </p>
+              </div>
+              <a
+                href="https://www.instagram.com/elites.crypto/reels/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--color-card)]"
+              >
+                <Instagram className="h-4 w-4" />
+                Watch on Instagram
+              </a>
+            </div>
+          </div>
+        </Section>
+      )}
 
       <Section size="md">
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-8 md:p-14">
