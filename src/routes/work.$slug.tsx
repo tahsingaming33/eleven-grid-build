@@ -354,7 +354,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 
 function ReelsGrid({ reels }: { reels: NonNullable<Project["reels"]> }) {
   return (
-    <div className="grid gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-px overflow-hidden border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2 lg:grid-cols-3">
       {reels.map((r) => (
         <ReelCard key={r.number} reel={r} />
       ))}
@@ -372,7 +372,7 @@ function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
       className="group block bg-[var(--color-card)] p-6"
     >
       <div
-        className="relative aspect-video w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]"
+        className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]"
       >
         <div
           aria-hidden
