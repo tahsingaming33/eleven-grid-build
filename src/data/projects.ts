@@ -17,6 +17,9 @@ import maagnus08 from "@/assets/maagnus/08.png.asset.json";
 import maagnus09 from "@/assets/maagnus/09.png.asset.json";
 import maagnus10 from "@/assets/maagnus/10.png.asset.json";
 
+const resolveLovableAssetUrl = (url: string) =>
+  url.startsWith("/__l5e/") ? `https://eleven-grid-build.lovable.app${url}` : url;
+
 export interface Project {
   slug: string;
   title: string;
@@ -169,7 +172,7 @@ export const projects: Project[] = [
     purpose: "Self-Initiated / Concept",
     cta: "tahasinmahmud12@gmail.com",
     vimeoId: "1206653266",
-    thumbnail: codexThumb.url,
+    thumbnail: resolveLovableAssetUrl(codexThumb.url),
     intro:
       "This was never a client or sponsored project. It's a personal experiment exploring how Codex can generate SVG code, built purely out of curiosity. The 15 second video is a simple animated demonstration of the idea, made independently with no affiliation to Codex.",
     strategy: {
@@ -207,26 +210,26 @@ export const projects: Project[] = [
     reels: [
       {
         number: "01",
-        videoUrl: eliteReel1.url,
+        videoUrl: resolveLovableAssetUrl(eliteReel1.url),
       },
       {
         number: "02",
-        videoUrl: eliteReel2.url,
+        videoUrl: resolveLovableAssetUrl(eliteReel2.url),
       },
       {
         number: "03",
-        videoUrl: eliteReel3.url,
+        videoUrl: resolveLovableAssetUrl(eliteReel3.url),
       },
       {
         number: "04",
-        videoUrl: eliteReel4.url,
+        videoUrl: resolveLovableAssetUrl(eliteReel4.url),
       },
       {
         number: "05",
-        videoUrl: eliteReel5.url,
+        videoUrl: resolveLovableAssetUrl(eliteReel5.url),
       },
-      { number: "06", videoUrl: eliteReel6.url },
-      { number: "07", videoUrl: eliteReel7.url },
+      { number: "06", videoUrl: resolveLovableAssetUrl(eliteReel6.url) },
+      { number: "07", videoUrl: resolveLovableAssetUrl(eliteReel7.url) },
     ],
     credits: [
       { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
