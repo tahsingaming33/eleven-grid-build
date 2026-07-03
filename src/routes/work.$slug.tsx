@@ -371,9 +371,7 @@ function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
       rel="noopener noreferrer"
       className="group block bg-[var(--color-card)] p-6"
     >
-      <div
-        className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]"
-      >
+      <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
         <div
           aria-hidden
           className="absolute inset-0"
@@ -382,23 +380,6 @@ function ReelCard({ reel }: { reel: NonNullable<Project["reels"]>[number] }) {
               "radial-gradient(ellipse at 50% 40%, color-mix(in oklab, var(--accent) 22%, transparent), #0a0a0a 70%)",
           }}
         />
-        <div className="absolute inset-0 grid place-items-center px-6 text-center">
-          <span className="text-lg font-medium tracking-[-0.01em] text-white/90 md:text-xl">
-            {reel.keyword}
-          </span>
-        </div>
-      </div>
-      <div className="mt-5 flex items-start justify-between gap-6">
-        <div className="min-w-0">
-          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="font-mono tracking-[0.18em] uppercase">Reel {String(reel.number).padStart(2, "0")}</span>
-            <span>·</span>
-            <span>2026</span>
-          </div>
-          <h3 className="mt-2 text-xl font-medium tracking-[-0.01em]">{reel.videoTitle}</h3>
-          <p className="mt-1 text-sm text-muted-foreground">{reel.keyword}</p>
-        </div>
-        <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
       </div>
     </a>
   );
