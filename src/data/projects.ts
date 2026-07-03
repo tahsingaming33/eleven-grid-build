@@ -1,11 +1,4 @@
-import codexThumb from "@/assets/projects/codex-thumb.png.asset.json";
-import eliteReel1 from "@/assets/reels/elite-crypto/reel1.mp4.asset.json";
-import eliteReel2 from "@/assets/reels/elite-crypto/reel2.mp4.asset.json";
-import eliteReel3 from "@/assets/reels/elite-crypto/reel3.mp4.asset.json";
-import eliteReel4 from "@/assets/reels/elite-crypto/reel4.mp4.asset.json";
-import eliteReel5 from "@/assets/reels/elite-crypto/reel5.mp4.asset.json";
-import eliteReel6 from "@/assets/reels/elite-crypto/reel6.mp4.asset.json";
-import eliteReel7 from "@/assets/reels/elite-crypto/reel7.mp4.asset.json";
+// Codex thumbnail is a committed file in /public so it resolves on any host.
 import maagnus01 from "@/assets/maagnus/01.png.asset.json";
 import maagnus02 from "@/assets/maagnus/02.png.asset.json";
 import maagnus03 from "@/assets/maagnus/03.png.asset.json";
