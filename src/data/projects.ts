@@ -1,3 +1,4 @@
+import codexThumb from "@/assets/projects/codex-thumb.png.asset.json";
 import maagnus01 from "@/assets/maagnus/01.png.asset.json";
 import maagnus02 from "@/assets/maagnus/02.png.asset.json";
 import maagnus03 from "@/assets/maagnus/03.png.asset.json";
@@ -159,6 +160,7 @@ export const projects: Project[] = [
     purpose: "Self-Initiated / Concept",
     cta: "tahasinmahmud12@gmail.com",
     vimeoId: "1206653266",
+    thumbnail: codexThumb.url,
     intro:
       "This was never a client or sponsored project. It's a personal experiment exploring how Codex can generate SVG code, built purely out of curiosity. The 15 second video is a simple animated demonstration of the idea, made independently with no affiliation to Codex.",
     strategy: {
