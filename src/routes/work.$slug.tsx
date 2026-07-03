@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import { getProject, projects } from "@/data/projects";
-import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Instagram, Play, X } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
