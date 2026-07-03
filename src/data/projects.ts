@@ -147,6 +147,33 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "codex",
+    title: "Codex",
+    subtitle: "A self-initiated concept video showing how Codex can generate SVG code.",
+    year: "2026",
+    description:
+      "A short concept video exploring how Codex can generate SVG code. Self-initiated, not an official Codex project.",
+    format: "Motion Video",
+    runtime: "15 Seconds",
+    production: "Self-Initiated",
+    purpose: "Self-Initiated / Concept",
+    cta: "tahasinmahmud12@gmail.com",
+    vimeoId: "1206653266",
+    intro:
+      "This was never a client or sponsored project. It's a personal experiment exploring how Codex can generate SVG code, built purely out of curiosity. The 15 second video is a simple animated demonstration of the idea, made independently with no affiliation to Codex.",
+    strategy: {
+      heading: "Strategy",
+      body: "The goal was small and clear: show, in fifteen seconds, that Codex can produce usable SVG code from a prompt. No client brief, no narrative gymnastics, just a clean animated demonstration of the idea. Motion carries the point so the concept lands before the viewer has to think about it.",
+      tags: ["Personal experiment", "Concept over production", "Small and clear"],
+    },
+    storyboard: [],
+    credits: [
+      { name: "Tahsin Mahmud", role: "Creative Direction", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Tahsin Mahmud", role: "Motion Design", href: "https://www.instagram.com/motiondudehere/" },
+      { name: "Self-initiated", role: "Client" },
+    ],
+  },
+  {
     slug: "elite-crypto-creator-series",
     title: "Elite Crypto Creator Series",
     subtitle: "A creator-led content series for a crypto education brand.",
