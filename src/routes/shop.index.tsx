@@ -23,7 +23,7 @@ interface ShopProduct {
 const shopProducts: ShopProduct[] = [
   {
     title: "Design Move: Soul Project File",
-    price: "Free",
+    price: "$1",
     description:
       "The complete After Effects project file for Design Move: Soul. Cleanly organized compositions, all assets included, and support for AE 2023, 2024 and 2025. Perfect for studying layout, typography and animation.",
     thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
