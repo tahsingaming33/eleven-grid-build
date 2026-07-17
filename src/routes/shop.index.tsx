@@ -32,6 +32,15 @@ const shopProducts: ShopProduct[] = [
     isNew: true,
   },
   {
+    title: "Codex Project File",
+    price: "$0+",
+    description:
+      "The complete project file for Codex, built in After Effects and Premiere Pro. Every layer, transition, and sound effect is included so you can study exactly how it was made.",
+    thumbnail: "https://public-files.gumroad.com/lqjs5junky40s7uwuiy49fvr2g6g",
+    url: "https://tahsinmahmud.gumroad.com/l/codexprojectfile",
+    category: "project-files",
+  },
+  {
     title: "Zelios SaaS Breakdown Video",
     price: "$1.99",
     description:
