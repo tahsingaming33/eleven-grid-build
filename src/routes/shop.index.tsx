@@ -281,7 +281,7 @@ function ShopPage() {
                           "inline-flex h-9 items-center gap-1 rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                            : p.isNew
+                            : p.isNew || p.mostDemand
                               ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
                               : "bg-foreground text-background")
                         }
@@ -298,7 +298,7 @@ function ShopPage() {
                           "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                            : p.isNew
+                            : p.isNew || p.mostDemand
                               ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
                               : "bg-foreground text-background")
                         }
