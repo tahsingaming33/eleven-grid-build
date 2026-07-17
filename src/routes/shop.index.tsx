@@ -177,14 +177,14 @@ function ShopPage() {
               key={p.title}
               className={
                 "group relative flex flex-col overflow-hidden rounded-2xl border bg-[var(--color-card)] " +
-                (p.bestSeller
+                  (p.bestSeller
                   ? "border-amber-300/60 shadow-[0_0_0_1px_rgba(251,191,36,0.25),0_20px_60px_-20px_rgba(251,191,36,0.45)]"
-                  : p.isNew
+                  : p.isNew || p.mostDemand
                     ? "border-blue-400/60 shadow-[0_0_0_1px_rgba(96,165,250,0.25),0_20px_60px_-20px_rgba(96,165,250,0.45)]"
                     : "border-[var(--color-border)]")
               }
             >
-              {p.isNew && (
+              {(p.isNew || p.mostDemand) && (
                 <>
                   <div
                     className="pointer-events-none absolute inset-0 rounded-2xl"
@@ -201,7 +201,7 @@ function ShopPage() {
                   </div>
                   <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-blue-400/60 bg-black/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur">
                     <Sparkles className="h-3 w-3" />
-                    New
+                    {p.mostDemand ? "Most Demand" : "New"}
                   </div>
                 </>
               )}
