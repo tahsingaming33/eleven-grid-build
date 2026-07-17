@@ -17,20 +17,11 @@ interface ShopProduct {
   category: Category;
   bestSeller?: boolean;
   isNew?: boolean;
+  mostDemand?: boolean;
   tutorialUrl?: string;
 }
 
 const shopProducts: ShopProduct[] = [
-  {
-    title: "Design Move: Soul Project File",
-    price: "$1",
-    description:
-      "The complete After Effects project file for Design Move: Soul. Cleanly organized compositions, all assets included, and support for AE 2023, 2024 and 2025. Perfect for studying layout, typography and animation.",
-    thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
-    url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
-    category: "project-files",
-    isNew: true,
-  },
   {
     title: "Codex Project File",
     price: "$0+",
@@ -39,6 +30,17 @@ const shopProducts: ShopProduct[] = [
     thumbnail: "https://public-files.gumroad.com/lqjs5junky40s7uwuiy49fvr2g6g",
     url: "https://tahsinmahmud.gumroad.com/l/codexprojectfile",
     category: "project-files",
+    isNew: true,
+  },
+  {
+    title: "Design Move: Soul Project File",
+    price: "$1",
+    description:
+      "The complete After Effects project file for Design Move: Soul. Cleanly organized compositions, all assets included, and support for AE 2023, 2024 and 2025. Perfect for studying layout, typography and animation.",
+    thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
+    url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
+    category: "project-files",
+    mostDemand: true,
   },
   {
     title: "Zelios SaaS Breakdown Video",
@@ -175,14 +177,14 @@ function ShopPage() {
               key={p.title}
               className={
                 "group relative flex flex-col overflow-hidden rounded-2xl border bg-[var(--color-card)] " +
-                (p.bestSeller
+                  (p.bestSeller
                   ? "border-amber-300/60 shadow-[0_0_0_1px_rgba(251,191,36,0.25),0_20px_60px_-20px_rgba(251,191,36,0.45)]"
-                  : p.isNew
+                  : p.isNew || p.mostDemand
                     ? "border-blue-400/60 shadow-[0_0_0_1px_rgba(96,165,250,0.25),0_20px_60px_-20px_rgba(96,165,250,0.45)]"
                     : "border-[var(--color-border)]")
               }
             >
-              {p.isNew && (
+              {(p.isNew || p.mostDemand) && (
                 <>
                   <div
                     className="pointer-events-none absolute inset-0 rounded-2xl"
@@ -199,7 +201,7 @@ function ShopPage() {
                   </div>
                   <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-blue-400/60 bg-black/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-blue-200 backdrop-blur">
                     <Sparkles className="h-3 w-3" />
-                    New
+                    {p.mostDemand ? "Most Demand" : "New"}
                   </div>
                 </>
               )}
@@ -279,7 +281,7 @@ function ShopPage() {
                           "inline-flex h-9 items-center gap-1 rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                            : p.isNew
+                            : p.isNew || p.mostDemand
                               ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
                               : "bg-foreground text-background")
                         }
@@ -296,7 +298,7 @@ function ShopPage() {
                           "inline-flex h-9 items-center rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-90 " +
                           (p.bestSeller
                             ? "bg-gradient-to-r from-amber-300 to-amber-500 text-black"
-                            : p.isNew
+                            : p.isNew || p.mostDemand
                               ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
                               : "bg-foreground text-background")
                         }
