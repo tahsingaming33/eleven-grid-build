@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowUpRight, Play, Sparkles } from "lucide-react";
 import { Section, Eyebrow } from "@/components/site/Grid";
 import cursorFollowThumb from "@/assets/shop/cursorfollow-thumb.png.asset.json";
+import codexThumb from "@/assets/projects/codex-thumb.png.asset.json";
 
 type Category = "project-files" | "scripts-plugins";
 
