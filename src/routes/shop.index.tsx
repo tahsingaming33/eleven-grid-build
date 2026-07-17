@@ -17,20 +17,11 @@ interface ShopProduct {
   category: Category;
   bestSeller?: boolean;
   isNew?: boolean;
+  mostDemand?: boolean;
   tutorialUrl?: string;
 }
 
 const shopProducts: ShopProduct[] = [
-  {
-    title: "Design Move: Soul Project File",
-    price: "$1",
-    description:
-      "The complete After Effects project file for Design Move: Soul. Cleanly organized compositions, all assets included, and support for AE 2023, 2024 and 2025. Perfect for studying layout, typography and animation.",
-    thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
-    url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
-    category: "project-files",
-    isNew: true,
-  },
   {
     title: "Codex Project File",
     price: "$0+",
@@ -39,6 +30,17 @@ const shopProducts: ShopProduct[] = [
     thumbnail: "https://public-files.gumroad.com/lqjs5junky40s7uwuiy49fvr2g6g",
     url: "https://tahsinmahmud.gumroad.com/l/codexprojectfile",
     category: "project-files",
+    isNew: true,
+  },
+  {
+    title: "Design Move: Soul Project File",
+    price: "$1",
+    description:
+      "The complete After Effects project file for Design Move: Soul. Cleanly organized compositions, all assets included, and support for AE 2023, 2024 and 2025. Perfect for studying layout, typography and animation.",
+    thumbnail: "https://public-files.gumroad.com/au5xrvpkad83wefz8wxyzqecn1bz",
+    url: "https://tahsinmahmud.gumroad.com/l/designmovesoul",
+    category: "project-files",
+    mostDemand: true,
   },
   {
     title: "Zelios SaaS Breakdown Video",
